@@ -46,7 +46,7 @@ def forward(self, q, k, v, mask=None):
 3.位置编码向量与输入embedding具有相同的维度（因此可以相加），并且使用正弦和余弦函数
 4.有相对位置编码（RPE）
 ```
-
+![img_1.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_1.png)
 5. 为什么需要残差连接(Residual Connection)和层归一化(Layer Normalization)
 
 ```text

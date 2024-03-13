@@ -26,6 +26,7 @@ Attention visualization
 
 
 ### Reference(参考文档)
+[论文:Attention Is All You Need](..%2Fusing_files%2Fpaper%2Fpytorch2transformer.pdf)
 * [论文](https://arxiv.org/abs/1706.03762)
 * [PyTorch搭建Transformer视频](https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil)
 * [上述视频的文档github地址](https://github.com/aceliuchanghong/pytorch-transformer)
