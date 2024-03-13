@@ -31,7 +31,7 @@ Multi-Head Attention
 3. Transformer为什么Q和K使用不同的权重矩阵生成
 
 ```text
-Transformer 模型的自注意力机制中，Q（查询矩阵）、K（键矩阵）和 V（值矩阵）
+Transformer 模型的自注意力机制中，Q（查询矩阵）K（键矩阵）和 V（值矩阵）
 实际上是为了对X进行线性变换，为了提升模型拟合能力
 def forward(self, q, k, v, mask=None):
 ```
@@ -42,7 +42,9 @@ def forward(self, q, k, v, mask=None):
 
 ```text
 1.transformer 其他结构没有考虑到单词之间的顺序信息，而单词的顺序信息对于语义是非常重要的
-2.位置编码向量与输入embedding具有相同的维度（因此可以相加），并且使用正弦和余弦函数
+2.因为self-attention是位置无关的
+3.位置编码向量与输入embedding具有相同的维度（因此可以相加），并且使用正弦和余弦函数
+4.有相对位置编码（RPE）
 ```
 
 5. 为什么需要残差连接(Residual Connection)和层归一化(Layer Normalization)
@@ -64,14 +66,43 @@ def forward(self, q, k, v, mask=None):
 而Transformer完全依赖于注意力机制，摒弃了循环和卷积的使用。
 ```
 
+8. 简单讲一下Transformer中的残差结构以及意义
+```text
+我理解,如果没有残差的话,当梯度始终为0,但是损失函数始终无法达标,就没法处理了
+```
+9. 为什么transformer块使用LayerNorm而不是BatchNorm？LayerNorm 在Transformer的位置是哪里？
+```text
+自然语言处理任务中的输入序列长度通常是可变的。与BatchNorm不同，
+LayerNorm是针对单个样本进行的，因此可以更自然地处理可变长度的序列。
 
+Layer Norm 的作用是将每个样本的特征进行归一化，
+使得特征在不同样本之间具有相似的分布，有助于提高模型的训练效果和泛化能力。
+具体来说，Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得它们的均值接近0，方差接近1
+```
+10. Encoder端和Decoder端是如何进行交互的
+```text
+通过转置encoder_ouput的seq_len维与depth维，进行矩阵两次乘法，
+即q*kT*v输出即可得到target_len维度的输出
+```
+11. 前馈神经网络结构(Feed-Forward Neural Network)
+```text
+是Transformer模型中的一个重要组成部分，用于对输入数据进行非线性变换。
+它由两个全连接层（即前馈神经网络）和一个激活函数组成
+线性变换：z = xW1 + b1
+```
+12. 激活函数解释
+```text
+1.GeLU（Gaussian Error Linear Unit）是一种激活函数，常用于神经网络中的非线性变换
+2.Swish是一种激活函数，它在深度学习中常用于神经网络的非线性变换
+3.ReLU（Rectified Linear Unit）
+```
 
 
 ### Reference(参考文档)
 
 * [Transformer解析1](https://blog.csdn.net/weixin_45965387/article/details/130470040)
 * [Transformer解析2](https://zhuanlan.zhihu.com/p/657268039)
-* [面试总结](https://docs.google.com/document/d/1LP4eZdxo_ovhB6CnfFqi8Ufys1MqEh9ubxDyeNk58hw/edit)
-
-
+* [朋友的面试总结](https://docs.google.com/document/d/1LP4eZdxo_ovhB6CnfFqi8Ufys1MqEh9ubxDyeNk58hw/edit)
+* [github其他人面试问题库](https://github.com/aceliuchanghong/others_interview_notes)
+* [LLMs面试常见问题](https://zhuanlan.zhihu.com/p/659042194)
 

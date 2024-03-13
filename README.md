@@ -13,11 +13,10 @@ FAQ_Of_LLM_Interview
 ├── prompt.md
 ├── 面试必问问题.md
 ├── 1.大模型算法基础/
+│   ├── PyTorch从0开始编写Transformer.md
 │   ├── PyTorch搭建神经网络.md
 │   ├── Transformer模型结构.md
 │   ├── 大模型的泛化能力.md
-│   ├── 注意力可视化与分析.md
-│   ├── 评估指标.md
 │   └── 预训练与微调.md
 └── 2.大模型优化技术/
     ├── 推理优化.md

@@ -91,12 +91,16 @@ model = NeuralNetwork(input_size=input_size, num_classes=num_classes).to(device)
 # 定义交叉熵损失函数
 criterion = nn.CrossEntropyLoss()
 # PyTorch提供的Adam优化器
+# 优化器是一种工具，用来帮助我们更新模型的参数，以使损失函数最小化
 optimizer = optim.Adam(params= model.parameters(), lr=learning_rate)
 ```
 训练模型
 ```python
 # 已经定义了我们的模型，加载了数据，并初始化了必要的组件
+# 我们的目标是最小化损失函数，这样模型的预测结果就会更接近真实标签。
 # 通过分批迭代训练数据来训练我们的神经网络，并使用反向传播更新模型参数
+# 反向传播是一种用于训练模型的优化算法。
+# 它通过计算损失函数对模型参数的梯度，并利用这些梯度来更新模型参数，以使损失函数最小化
 for epoch in range(num_epochs):
     for batch_idx, (data, labels) in enumerate(train_loader):
         data = data.to(device=device)
@@ -105,8 +109,13 @@ for epoch in range(num_epochs):
         scores = model(data)
         loss = criterion(scores, labels)
         optimizer.zero_grad()
+        
+        # 这两行代码执行了反向传播的关键步骤
+        # 梯度是损失函数对模型参数的变化率，或者说是损失函数关于模型参数的导数
+        # 计算了损失函数对模型参数的梯度。将计算得到的梯度存储在模型的参数的.grad属性中
         loss.backward()
-
+        # 根据损失函数的梯度来更新模型的参数
+        # 优化器会根据规则Adam,以及损失函数的梯度，对模型的参数进行更新，使得损失函数的值减小
         optimizer.step()
 ```
 评估模型
