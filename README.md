@@ -6,117 +6,144 @@
 
 ### 暂时按照以下目录
 ```text
-一、大模型算法基础
-1. 自注意力机制(Self-Attention)
-   1.1 自注意力机制的思路
-   1.2 自注意力机制的计算过程
-   1.3 自注意力机制的代码实现
-2. 多头注意力机制(Multi-Head Attention)
-   2.1 多头注意力机制的思路
-   2.2 多头注意力机制的计算过程
-   2.3 多头注意力机制的代码实现
-3. 位置编码(Position Encoding)
-   3.1 为什么需要位置编码
-   3.2 位置编码的方法
-      3.2.1 绝对位置编码
-      3.2.2 相对位置编码
-      3.2.3 旋转位置编码(RoPE)
-4. 层归一化(Layer Normalization)
-   4.1 层归一化的思路
-   4.2 层归一化的计算过程
-   4.3 层归一化的代码实现
-5. 残差连接(Residual Connection)
-   5.1 残差连接的作用
-   5.2 残差连接的实现方式
-6. Transformer 模型结构
-   6.1 Transformer Encoder 结构
-   6.2 Transformer Decoder 结构
-   6.3 Transformer 模型整体结构
+FAQ_Of_LLM_Interview
+|
+├── LICENSE
+├── README.md
+├── prompt.md
+├── 面试必问问题.md
+├── 1.大模型算法基础/
+│   ├── PyTorch搭建神经网络.md
+│   ├── Transformer模型结构.md
+│   ├── 大模型的泛化能力.md
+│   ├── 注意力可视化与分析.md
+│   ├── 评估指标.md
+│   └── 预训练与微调.md
+└── 2.大模型优化技术/
+    ├── 推理优化.md
+    ├── 模型压缩技术.md
+    ├── 模型结构优化.md
+    └── 训练优化.md
+```
+一、大模型基础知识
+1. Transformer模型结构
+   - Encoder-Decoder架构
+   - Self-Attention机制
+     - Scaled Dot-Product Attention
+     - 计算复杂度分析
+   - Multi-Head Attention
+     - 并行计算与参数共享
+     - 不同Head的作用与解释
+   - Feed-Forward Network
+     - 前馈神经网络结构
+     - 激活函数选择(ReLU、GeLU等)
+   - Residual Connection
+     - 残差连接的作用与优势
+     - Pre-Norm与Post-Norm的区别
+   - Layer Normalization
+     - 归一化的必要性与效果
+     - Layer Norm与Batch Norm的区别
+2. 预训练与微调
+   - 无监督预训练(如BERT、GPT等)
+     - Masked Language Modeling(MLM)
+     - Next Sentence Prediction(NSP)
+     - Permutation Language Modeling(PLM)
+   - 有监督微调(如分类、序列标注等)
+     - 微调方法(如全参数微调、Prompt Tuning等)
+     - 微调过拟合问题与应对策略
+   - 领域自适应
+     - 领域数据集构建
+     - 持续学习与增量学习
+   - 多任务学习
+     - 多任务学习的优势与挑战
+     - 任务间知识迁移与干扰问题
+3. 评估指标
+   - 困惑度(Perplexity)
+     - 定义与计算方法
+     - 困惑度的局限性
+   - BLEU、ROUGE等生成任务评估指标
+     - 指标的定义与计算方法
+     - 不同指标的适用场景与局限性
+   - 精确率、召回率、F1等分类任务评估指标
+     - 指标的定义与计算方法
+     - 不平衡数据集下的评估问题
+4. 注意力可视化与分析
+   - 注意力矩阵的可视化方法
+   - 注意力分布的统计分析
+   - 注意力机制的可解释性
+5. 大模型的参数量与计算量分析
+   - 不同规模模型的参数量比较
+   - FLOPs与推理速度估算
+   - 模型压缩与加速方法
+6. 大模型的泛化能力与鲁棒性
+   - 零样本学习能力
+   - 抗干扰能力与对抗攻击
+   - 数据分布变化下的泛化能力
+7. 大模型的知识表示与存储
+   - 知识的隐式编码方式
+   - 知识的显式存储与更新
+   - 知识的提取与应用
+8. PyTorch搭建神经网络
 
-二、大模型算法优化
-1. 注意力机制优化
-   1.1 Linformer
-   1.2 Longformer
-   1.3 BigBird
-   1.4 Reformer
-2. 位置编码优化
-   2.1 旋转位置编码(RoPE)
-   2.2 ALiBi
-3. 层归一化优化
-   3.1 RMSNorm
-   3.2 DeepNorm
-4. 激活函数优化
-   4.1 GELU
-   4.2 SwiGLU
-   4.3 ReGLU
-5. 模型并行优化
-   5.1 Tensor Parallelism
-   5.2 Pipeline Parallelism
-6. 模型压缩优化
-   6.1 量化(Quantization)
-   6.2 知识蒸馏(Knowledge Distillation)
-   6.3 剪枝(Pruning)
-   6.4 低秩分解(Low-Rank Decomposition)
 
-三、大模型训练与微调
-1. 大模型预训练
-   1.1 预训练目标
-   1.2 预训练数据
-   1.3 预训练策略
-2. 大模型微调
-   2.1 全参数微调
-   2.2 低秩微调(LoRA)
-   2.3 Prompt Tuning
-   2.4 Prefix Tuning
-3. 多任务学习
-   3.1 多任务学习的思路
-   3.2 多任务学习的实现方式
-4. 领域自适应
-   4.1 数据收集与处理
-   4.2 领域自适应方法
-5. 评估指标
-   5.1 自动评估指标
-   5.2 人工评估指标
+二、大模型优化技术
+1. 模型结构优化
+   - Attention机制变体(如Sparse Attention、Linear Attention等)
+     - 稀疏注意力机制的原理与优势
+     - 线性注意力机制的原理与优势
+   - 位置编码优化(如相对位置编码)
+     - 绝对位置编码的局限性
+     - 相对位置编码的原理与优势
+   - 激活函数选择(如GeLU、Swish等)
+     - 不同激活函数的特点与适用场景
+     - 激活函数对模型性能的影响
+   - 归一化方式改进(如Pre-LN、AdaNorm等)
+     - Pre-LN与Post-LN的区别与优劣
+     - AdaNorm的原理与效果
+2. 训练优化
+   - 优化器选择(如AdamW、Lion等)
+     - 不同优化器的原理与特点
+     - 优化器超参数的选择与调优
+   - 学习率调度(如Warmup、Cosine Annealing等)
+     - 学习率调度的必要性
+     - 不同调度策略的原理与效果
+   - 梯度裁剪(Gradient Clipping)
+     - 梯度裁剪的作用与实现方式
+     - 梯度裁剪阈值的选择
+   - 正则化技术(如Dropout、Weight Decay等)
+     - 不同正则化技术的原理与作用
+     - 正则化技术的适用场景与局限性
+   - 数据增强(如词替换、回译等)
+     - 数据增强的必要性
+     - 不同数据增强方法的原理与效果
+3. 推理优化
+   - 模型量化(如FP16、INT8等)
+     - 量化的原理与实现方式
+     - 量化对模型性能与速度的影响
+   - 模型裁剪(如Pruning、Knowledge Distillation等)
+     - 剪枝的原理与实现方式
+     - 知识蒸馏的原理与实现方式
+   - 可扩展注意力(如Longformer、Big Bird等)
+     - 可扩展注意力机制的原理
+     - 不同可扩展注意力模型的特点与适用场景
+   - 模型并行(如Tensor Parallelism、Pipeline Parallelism等)
+     - 不同并行策略的原理与实现方式
+     - 并行策略的优缺点与适用场景
+   - 推理加速(如TensorRT、ONNX Runtime等)
+     - 推理加速框架的原理与使用方法
+     - 推理加速对模型性能与速度的影响
+4. 模型压缩技术
+   - 低秩分解(如SVD、Tucker分解等)
+     - 低秩分解的原理与实现方式
+     - 低秩分解对模型性能与速度的影响
+   - 参数共享(如Cross-Layer Parameter Sharing等)
+     - 参数共享的原理与实现方式
+     - 参数共享对模型性能与速度的影响
+   - 架构搜索(如NAS、AutoML等)
+     - 架构搜索的原理与实现方式
+     - 架构搜索的计算成本与效果评估
 
-四、大模型推理与部署
-1. 推理加速
-   1.1 INT8量化
-   1.2 FP16混合精度
-   1.3 Tensor/Pipeline Parallelism
-2. 模型裁剪
-   2.1 前缀裁剪(Prefix Dropping)
-   2.2 注意力头裁剪(Attention Head Pruning)
-3. 上下文扩展
-   3.1 流式处理(Streaming)
-   3.2 重叠拼接(Overlapping)
-4. 模型部署
-   4.1 在线服务部署
-   4.2 离线应用部署
-
-五、大模型应用场景
-1. 自然语言处理
-   1.1 文本生成
-   1.2 机器翻译
-   1.3 问答系统
-   1.4 文本摘要
-2. 计算机视觉
-   2.1 图像分类
-   2.2 目标检测
-   2.3 图像生成
-3. 多模态
-   3.1 视觉问答
-   3.2 图文生成
-   3.3 多模态检索
-4. 其他领域
-   4.1 蛋白质结构预测
-   4.2 分子设计
-   4.3 代码生成
-
-六、大模型面临的挑战
-1. 数据质量与隐私
-2. 计算资源需求
-3. 模型可解释性
-4. 公平性与偏见
-5. 安全性与可靠性
-6. 能源消耗与环境影响
+### 吐槽
+```text
+大模型这方向真的卷，新模型，新paper疯狂出，东西出的比我读的快
 ```
