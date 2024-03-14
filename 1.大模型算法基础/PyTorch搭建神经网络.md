@@ -36,14 +36,14 @@ class NeuralNetwork(nn.Module):
     def forward(self, x):
         return self.fc2(F.relu(self.fc1(x)))
 ```
-检查正确的形状
+检查一下上面的类
 ```python
 model = NeuralNetwork(784, 10)
 x = torch.rand(64,784)
 print(model(x).shape)
 # torch.Size([64, 10])
 ```
-设置设备
+设备设置
 ```python
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 ```
@@ -110,7 +110,7 @@ for epoch in range(num_epochs):
         loss = criterion(scores, labels)
         optimizer.zero_grad()
         
-        # 这两行代码执行了反向传播的关键步骤
+        # 这两行代码执行了反向传播(Backpropagation)的关键步骤
         # 梯度是损失函数对模型参数的变化率，或者说是损失函数关于模型参数的导数
         # 计算了损失函数对模型参数的梯度。将计算得到的梯度存储在模型的参数的.grad属性中
         loss.backward()

@@ -22,7 +22,7 @@ Validation loop
 Attention visualization
 ```
 
-
+待写(我还没学完,之后写):
 
 
 ### Reference(参考文档)
