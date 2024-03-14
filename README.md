@@ -1,18 +1,17 @@
 ### FAQ_Of_LLM_Interview
 
-大模型算法岗面试题(含答案):常见问题和概念解析 "大模型面试题"、"算法岗面试"、"面试常见问题"
+大模型算法岗面试题(含答案):常见问题和概念解析 "大模型面试题"、"算法岗面试"、"面试常见问题","大模型应用基础"
 ### 欢迎PR
 
 
 ### 暂时按照以下目录
 ```text
-FAQ_Of_LLM_Interview
+FAQ_Of_LLM_Interview/
 |
 ├── LICENSE
 ├── README.md
-├── prompt.md
 ├── 面试必问问题.md
-├── 1.大模型算法基础/
+├── 1.大模型应用基础/
 │   ├── PyTorch从0开始编写Transformer.md
 │   ├── PyTorch搭建神经网络.md
 │   ├── Transformer模型结构.md
@@ -28,7 +27,7 @@ FAQ_Of_LLM_Interview
     ├── LangChain&SQL.md
     ├── LangChain&Server&Cli.md
     ├── LangChain.md
-    ├── LoRA&Prompt-Tuning.md
+    ├── LoRA&ETC.md
     ├── Pinecone&Faiss&Chroma.md
     ├── Pytorch&DeepSpeed.md
     ├── fine-tune参数解释.md
