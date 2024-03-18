@@ -82,3 +82,4 @@ P-tuning v2通过使用更多的连续前缀，可以更充分地捕捉任务相
 
 * [模型微调方法](https://blog.csdn.net/v_JULY_v/article/details/132116949)
 * [Tune简单理解](https://zhuanlan.zhihu.com/p/660721012)
+* [微调总结](https://www.zhihu.com/tardis/zm/art/627642632?source_id=1003)
