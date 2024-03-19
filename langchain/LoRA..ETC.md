@@ -12,6 +12,15 @@ LoRA（Low-Rank Adaptation)
 LoRA的工作原理是将预训练模型的注意力矩阵或前馈网络矩阵分解为两个低秩矩阵的乘积，
 其中这两个低秩矩阵被视为可学习的任务特定参数。
 
+LoRA 的原理其实并不复杂，它的核心思想是在原始预训练语言模型旁边增加一个旁路，
+做一个降维再升维的操作，来模拟所谓的 intrinsic rank（预训练模型在各类下游任务上泛化的过程其实就是在优化各类任务的公共低维本征（low-dimensional intrinsic）子空间中非常少量的几个自由参数）。
+训练的时候固定预训练语言模型的参数，只训练降维矩阵 A 与升维矩阵 B。而模型的输入输出维度不变，输出时将 BA 与预训练语言模型的参数叠加。
+用随机高斯分布初始化 A，用 0 矩阵初始化 B。这样能保证训练开始时，新增的通路BA=0从，而对模型结果没有影响。
+
+在推理时，将左右两部分的结果加到一起即可，h=Wx+BAx=(W+BA)x，
+所以，只要将训练完成的矩阵乘积BA跟原本的权重矩阵W加到一起作为新权重参数替换原始预训练语言模型的W即可，
+不会增加额外的计算资源。
+
 ### How LoRA
 使用矩阵分解(奇异值分解或特征值分解)将语言模型的参数矩阵分解为较低秩的近似矩阵
 
@@ -83,3 +92,6 @@ P-tuning v2通过使用更多的连续前缀，可以更充分地捕捉任务相
 * [模型微调方法](https://blog.csdn.net/v_JULY_v/article/details/132116949)
 * [Tune简单理解](https://zhuanlan.zhihu.com/p/660721012)
 * [微调总结](https://www.zhihu.com/tardis/zm/art/627642632?source_id=1003)
+* [Github1页面](https://github.com/aceliuchanghong/chatglm3_6b_finetune)
+* [Github2页面](https://github.com/aceliuchanghong/chatglm3-base-tuning)
+* [Github3页面](https://github.com/aceliuchanghong/llm-action)
