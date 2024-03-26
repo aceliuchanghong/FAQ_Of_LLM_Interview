@@ -93,6 +93,7 @@ criterion = nn.CrossEntropyLoss()
 # PyTorch提供的Adam优化器
 # 优化器是一种工具，用来帮助我们更新模型的参数，以使损失函数最小化
 optimizer = optim.Adam(params= model.parameters(), lr=learning_rate)
+# optim.SGD()
 ```
 训练模型
 ```python

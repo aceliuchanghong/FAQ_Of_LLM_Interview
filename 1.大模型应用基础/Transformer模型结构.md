@@ -48,6 +48,7 @@ def forward(self, q, k, v, mask=None):
 ```
 ![img_4.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_4.png)
 ![img.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg.png)
+![img_8.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_8.png)
 
 4. 为什么要位置编码
 
@@ -62,7 +63,7 @@ def forward(self, q, k, v, mask=None):
 
 ```text
 残差连接：解决神经网络的“退化现象”(过拟合)
-层归一化：使得训练的模型更稳定，并且起到加快收敛速度的作用
+层归一化：使得训练的模型更稳定，并且起到加快收敛速度的作用,且提高模型泛用能力
 Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得它们的均值接近0，方差接近1(意味着数据集呈现出标准正态分布)
 ```
 ![img_5.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_5.png)
@@ -86,6 +87,7 @@ Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得
 ```
 9. 为什么transformer块使用LayerNorm而不是BatchNorm？LayerNorm 在Transformer的位置是哪里？
 ```text
+LN/BN
 自然语言处理任务中的输入序列长度通常是可变的。与BatchNorm不同，
 LayerNorm是针对单个样本进行的，因此可以更自然地处理可变长度的序列。
 
@@ -113,6 +115,20 @@ Encoder端和Decoder端通过注意力机制进行交互，以便Decoder端能�
 3.ReLU（Rectified Linear Unit）修正线性单元
 ```
 ![img_7.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_7.png)
+13. CNN和Transformer区别
+```text
+CNN主要用于处理具有网格结构的数据，比如图像。它包含了卷积层、池化层和全连接层。
+
+卷积层（Convolutional Layer）： 卷积操作是CNN的核心。
+卷积层通过卷积核与输入数据进行卷积操作，提取出图像的局部特征。
+
+池化层（Pooling Layer）： 池化层用于减少卷积层输出的空间维度，同时保留重要的特征。
+常见的池化操作包括最大池化和平均池化。
+
+全连接层（Fully Connected Layer）： 全连接层将卷积层或池化层的输出展开成一维向量，
+并通过权重矩阵与偏置项进行线性变换，然后应用激活函数，得到最终的分类结果。
+```
+![img_9.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_9.png)
 
 ### Reference(参考文档)
 

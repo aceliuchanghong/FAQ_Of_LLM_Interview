@@ -22,7 +22,62 @@ Validation loop
 Attention visualization
 ```
 
-待写(我还没学完,之后写):
+Pytorch如何使用多gpu?
+```text
+# 将输入一个batch的数据均分成多份，分别送到对应的GPU进行计算，各个GPU得到的梯度累加
+model= nn.DataParallel(model)
+```
+pytorch如何微调fine tuning?
+```text
+局部微调：加载了模型参数后，只想调节最后几层，其他层不训练，也就是不进行梯度计算
+pytorch提供的requires_grad使得对训练的控制变得非常简单。
+
+model = torchvision.models.resnet18(pretrained=True)
+for param in model.parameters():
+    param.requires_grad = False
+# 替换最后的全连接层， 改为训练100类
+# 新构造的模块的参数默认requires_grad为True
+model.fc = nn.Linear(512, 100)
+ 
+# 只优化最后的分类层
+optimizer = optim.SGD(model.fc.parameters(), lr=1e-2, momentum=0.9)
+
+
+全局微调：对全局微调时，只不过我们希望改换过的层和其他层的学习速率不一样，
+这时候把其他层和新层在optimizer中单独赋予不同的学习速率。
+
+ignored_params = list(map(id, model.fc.parameters()))
+base_params = filter(lambda p: id(p) not in ignored_params,
+                     model.parameters())
+ 
+optimizer = torch.optim.SGD([
+            {'params': base_params},
+            {'params': model.fc.parameters(), 'lr': 1e-3}
+            ], lr=1e-2, momentum=0.9)
+```
+Pytorch如何实现大部分layer?
+```text
+pytorch可以实现大部分layer，这些层都继承于nn.Module
+```
+nn.Functional和nn.Module区别
+```text
+高层API方法：使用torch.nn.Module.****实现
+低层API方法：使用低层函数方法，torch.nn.functional.****实现
+```
+反向传播的流程
+```text
+loss.backward()；反向传播 optimizer.step() 权重更新；optimizer.zero_grad() 导数清零
+```
+
+
+
+
+
+
+
+
+
+
 
 
 ### Reference(参考文档)
