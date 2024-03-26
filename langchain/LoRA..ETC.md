@@ -73,6 +73,8 @@ P-Tuning 是一种在预训练语言模型中微调参数的方法，以适应�
 P-tuning v2是P-tuning的改进版本，它使用了更多的连续前缀表示来引导模型生成适应特定任务的输出。
 采用Prefix-tuning的做法，在输入前面的每层加入可微调的参数
 
+![img_7.png](..%2Fusing_files%2Fimg%2Flora%2Fimg_7.png)
+
 ### P-tuning v2
 
 P-Tuning v2 是对 P-Tuning 的进一步改进，其核心思想是使用少量的任务特定参数来引导模型学习特定任务的知识。与 P-Tuning 相比，P-Tuning v2 引入了更少的额外参数，并且更注重模型的参数复用性和效率。
