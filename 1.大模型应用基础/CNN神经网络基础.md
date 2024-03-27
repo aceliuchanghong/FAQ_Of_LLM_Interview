@@ -1,4 +1,4 @@
-## 卷积(Convolutional Neural Networks, CNN)
+## 卷积神经网络(Convolutional Neural Networks, CNN)
 ### What
 ```text
 卷积是微积分里的一个术语，指卷积运算
