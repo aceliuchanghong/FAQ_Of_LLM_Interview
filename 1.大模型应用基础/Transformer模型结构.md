@@ -18,6 +18,11 @@ transformer的左半部分是encoder（编码器），右半部分是decoder（�
 第三层是多头注意力机制，类似于在encoder的第一子层中实现的机制。
 在decoder，这种多头注意力机制接收来自前一个decoder层的查询，以及来自encoder输出的键和值。这允许decoder处理输入序列中的所有单词
 
+核心:
+注意力机制,W(q),W(k)其实就是训练的目的
+其实是Q=XW(q),K=XW(k),
+softmax分类函数定义
+
 在Transformer模型中，Decoder端确实有输入，这些输入被称为“解码器输入”。虽然Decoder端的主要任务是生成目标序列（如翻译结果），但是为了能够生成正确的输出，Decoder端仍然需要一些信息作为输入。
 解码器输入通常包括：
 位置编码（Positional Encoding）：与Encoder端类似，Decoder端也需要位置编码来表示输入序列中各个位置的相对位置关系。
@@ -27,11 +32,16 @@ transformer的左半部分是encoder（编码器），右半部分是decoder（�
 编码器将输入序列编码为固定长度的向量,解码器根据编码器的输出生成输出序列
 1.优点是可以处理输入和输出序列不同长度的任务，如机器翻译；
 2.缺点是模型结构较为复杂，训练和推理计算量较大
+(什么叫注意力参考另外的文章)
 ```
+
+![img.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg.png)
 
 2. Transformer为何使用多头注意力机制
 
 ```text
+首先看下图了解注意力机制的公式
+
 Multi-Head Attention
 1.多头注意力机制允许模型同时关注不同的位置和语义信息,如果只使用一个头，模型可能会错过某些重要的依赖关系
 2.多头可以使参数矩阵形成多个子空间，矩阵整体的size不变，只是改变了每个head对应的维度大小
