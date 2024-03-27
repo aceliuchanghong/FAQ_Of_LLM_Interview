@@ -4,7 +4,7 @@
 ### 欢迎PR
 
 
-### 暂时按照以下目录
+### 目录
 ```text
 FAQ_Of_LLM_Interview/
 |
@@ -12,6 +12,7 @@ FAQ_Of_LLM_Interview/
 ├── README.md
 ├── 面试必问问题.md
 ├── 1.大模型应用基础/
+│   ├── CNN神经网络基础.md
 │   ├── PyTorch从0开始编写Transformer.md
 │   ├── PyTorch搭建神经网络.md
 │   ├── Transformer模型结构.md
@@ -20,6 +21,8 @@ FAQ_Of_LLM_Interview/
 ├── 2.大模型优化技术/
 │   ├── 微调优化.md
 │   └── 程序代码结构.md
+├── 3.interview_qa/
+│   └── 某国企01.md
 └── langchain/
     ├── GPT&Bert.md
     ├── LangChain&CSV.md
@@ -27,7 +30,7 @@ FAQ_Of_LLM_Interview/
     ├── LangChain&SQL.md
     ├── LangChain&Server&Cli.md
     ├── LangChain.md
-    ├── LoRA&ETC.md
+    ├── LoRA..ETC.md
     ├── Pinecone&Faiss&Chroma.md
     ├── Pytorch&DeepSpeed.md
     ├── fine-tune参数解释.md
