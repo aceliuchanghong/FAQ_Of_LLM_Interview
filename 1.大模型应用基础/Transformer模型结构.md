@@ -110,6 +110,7 @@ Encoder端和Decoder端通过注意力机制进行交互，以便Decoder端能�
 ![img_6.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_6.png)
 12. 激活函数解释
 ```text
+激活函数的主要作用是提供网络的非线性建模能力。激活函数是必不可少的，因为没有激活函数，网络仅能够表示线性映射。
 1.GeLU（Gaussian Error Linear Unit）是一种激活函数，常用于神经网络中的非线性变换
 2.Swish是一种激活函数，它在深度学习中常用于神经网络的非线性变换
 3.ReLU（Rectified Linear Unit）修正线性单元
