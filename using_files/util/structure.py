@@ -1,3 +1,4 @@
+# pip install easy-media-utils
 from tree_utils.struct_tree_out import print_tree
 
 path = r'../../../FAQ_Of_LLM_Interview'
