@@ -20,3 +20,34 @@
 6. 服务器购买的一些信息,A卡N卡的一些区别
 
 求求了,让老子过吧
+
+
+面试过后当天发了一个nlp的挑战给我,内容如下:
+```text
+# 文件位置:../using_files/zip/atom_nlp_challenge.zip
+# 对电影评论进行情感分类
+Stage 1:
+	Task: Sentiment Classification for movie reviews
+	Description: We have 50 movie reviews from different movies, do the sentiment classification for each one of the them and save the result to the new column
+	Data: movie_reviews.xlsx
+	Expected output: colums = [review_id, review, sentiment]
+					rows = 50
+# 将描述与评论相关联
+Stage 2:
+	Task: Relate the description with the review
+	Description: Find out which review belongs to which description. the ratio of description/review is not fixed, some with more some with less.
+	Data: movie_reviews.xlsx,movie_description.xlsx 
+	Expected output: colums = [review_id, description_id]
+					rows = 50
+```
+```text
+参考的链接:
+https://github.com/martandsingh/dataanalytics/blob/master/movie-review-sentiment-analysis-nlp.ipynb
+```
+我是colab执行的,附一下colab的执行记录:
+
+[my_movie_analysis.ipynb](..%2Fusing_files%2Fzip%2Fmy_movie_analysis.ipynb)
+
+
+
+
