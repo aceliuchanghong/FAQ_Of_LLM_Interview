@@ -39,15 +39,13 @@ Stage 2:
 	Data: movie_reviews.xlsx,movie_description.xlsx 
 	Expected output: colums = [review_id, description_id]
 					rows = 50
+# 我是在colab做的,附一下colab的执行记录:
 ```
-```text
-参考的链接:
-https://github.com/martandsingh/dataanalytics/blob/master/movie-review-sentiment-analysis-nlp.ipynb
-```
-我是colab执行的,附一下colab的执行记录:
 
-[my_movie_analysis.ipynb](..%2Fusing_files%2Fzip%2Fmy_movie_analysis.ipynb)
+Stage 1:
 
+[my_movie_analysis_score.ipynb](..%2Fusing_files%2Fzip%2Fmy_movie_analysis_score.ipynb)
 
+Stage 2:
 
-
+[my_movie_analysis_description_with_review.ipynb](..%2Fusing_files%2Fzip%2Fmy_movie_analysis_description_with_review.ipynb)
