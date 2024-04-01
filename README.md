@@ -33,6 +33,7 @@ FAQ_Of_LLM_Interview/
 │   └── 联通.md
 └── langchain/
     ├── GPT&Bert.md
+    ├── LC&Extract.md
     ├── LangChain&CSV.md
     ├── LangChain&LCEL.md
     ├── LangChain&SQL.md
