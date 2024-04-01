@@ -49,3 +49,20 @@ Stage 1:
 Stage 2:
 
 [my_movie_analysis_description_with_review.ipynb](..%2Fusing_files%2Fzip%2Fmy_movie_analysis_description_with_review.ipynb)
+
+
+
+### 20240401问题解析:
+
+增加微调记录
+
+[LLM_Fine_Tuning.ipynb](..%2F2.%B4%F3%C4%A3%D0%CD%D3%C5%BB%AF%BC%BC%CA%F5%2Ffine_tune%2FLLM_Fine_Tuning.ipynb)
+
+显卡信息:
+
+![img_14.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_14.png)
+
+
+
+### Reference
+* [显卡](https://juejin.cn/post/7311602485865676810)

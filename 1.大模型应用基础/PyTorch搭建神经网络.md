@@ -32,7 +32,8 @@ class NeuralNetwork(nn.Module):
         # 而num_classes通常是指分类问题中的类别数量。
         # 这意味着fc2层将上一层的输出（大小为50）映射到一个大小为num_classes的输出空间
         self.fc2 = nn.Linear(in_features=50, out_features=num_classes)
-
+        
+    # 定义了神经网络的前向传播过程
     def forward(self, x):
         return self.fc2(F.relu(self.fc1(x)))
 ```
@@ -50,11 +51,11 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 设置超参数
 ```python
 # 定义了一个学习率0.001，一个批量大小64，并训练了10个epochs。
-input_size = 784
-num_classes = 10
-learning_rate = 0.001
-batch_size = 64
-num_epochs = 10
+input_size = 784  # 输入特征维度
+num_classes = 10  # 输出类别
+learning_rate = 0.001  # 学习率
+batch_size = 64  # 批次大小
+num_epochs = 10  # 迭代次数
 ```
 加载数据
 ```python
@@ -107,7 +108,12 @@ for epoch in range(num_epochs):
         data = data.to(device=device)
         labels = labels.to(device=device)
         data = data.reshape(data.shape[0], -1)
+        
+        # forward 函数体现 
+        # 在每个训练批次中，通过将数据传递给模型，调用了模型的 forward 方法。
+        # 这样做会执行神经网络的前向传播过程
         scores = model(data)
+        
         loss = criterion(scores, labels)
         optimizer.zero_grad()
         

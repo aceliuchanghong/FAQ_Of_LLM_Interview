@@ -236,20 +236,6 @@ fc = nn.Linear(in_features=input_size, out_features=50)
 LeNet-5,AlexNet,VGG-16,ResNet,GoogLeNet
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Reference(参考文档)
 
 * [卷积理解一](https://buyi1128.github.io/2019/02/26/basicCNN/)

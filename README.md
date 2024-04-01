@@ -10,6 +10,7 @@ FAQ_Of_LLM_Interview/
 |
 ├── LICENSE
 ├── README.md
+├── requirements.txt
 ├── 面试必问问题.md
 ├── 1.大模型应用基础/
 │   ├── CNN神经网络基础.md
@@ -21,10 +22,15 @@ FAQ_Of_LLM_Interview/
 │   └── 训练与推理.md
 ├── 2.大模型优化技术/
 │   ├── 常见大模型调用代码.md
-│   └── 微调优化.md
+│   ├── 微调优化.md
+│   └── fine_tune/
+│       ├── LLM_Fine_Tuning.ipynb
+│       └── LLM_Fine_Tuning.md
 ├── 3.interview_qa/
-│   ├── atom01.md
-│   └── 某国企01.md
+│   ├── atom.md
+│   ├── pdd.md
+│   ├── 任意子智能.md
+│   └── 联通.md
 └── langchain/
     ├── GPT&Bert.md
     ├── LangChain&CSV.md
@@ -45,6 +51,10 @@ conda create -n myPlot python=3.11
 conda activate myPlot
 pip install -r requirements.txt --proxy=127.0.0.1:10809
 ```
+### 必备知识
+在阅读本文前，建议补充一些相关知识。若你之前未了解过相关原理，可以参考以下的链接：
+
+* [github库](https://github.com/aceliuchanghong/large_scale_models_learning_log)
 
 ### 吐槽
 ```text
