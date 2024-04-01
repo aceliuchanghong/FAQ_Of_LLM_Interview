@@ -27,6 +27,14 @@ for dirname, _, filenames in os.walk(my_files):
 # 复制保存文件        
 !cp -r /content/sample_data/00 /content/drive/MyDrive/fine_tune_log/files
 ```
+```python
+# 如果想将模型下载到指定目录/content/sample_data/00,可以在创建tokenizer时传入cache_dir参数。
+!mkdir -p /content/sample_data/00
+base_model = "mistralai/Mistral-7B-v0.1"
+cache_dir = "/content/sample_data/00"
+
+tokenizer = AutoTokenizer.from_pretrained(base_model, trust_remote_code=True, cache_dir=cache_dir)
+```
 
 ### Reference(参考文档)
 * [Mistral-7B实际微调](https://gathnex.medium.com/mistral-7b-fine-tuning-a-step-by-step-guide-52122cdbeca8)
