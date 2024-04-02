@@ -1,10 +1,12 @@
 ### FAQ_Of_LLM_Interview
 
-大模型算法岗面试题(含答案):常见问题和概念解析 "大模型面试题"、"算法岗面试"、"面试常见问题"、"大模型算法面试"、"大模型应用基础"
+大模型算法岗面试题(含答案):常见问题和概念解析 "大模型面试题"、"算法岗面试"、"面试常见问题"、"大模型算法面试"、"
+大模型应用基础"
+
 ### 欢迎PR
 
-
 ### 目录
+
 ```text
 FAQ_Of_LLM_Interview/
 |
@@ -30,6 +32,7 @@ FAQ_Of_LLM_Interview/
 │   ├── atom.md
 │   ├── pdd.md
 │   ├── 任意子智能.md
+│   ├── 上海火炬电子科技.md
 │   └── 联通.md
 └── langchain/
     ├── GPT&Bert.md
@@ -45,19 +48,25 @@ FAQ_Of_LLM_Interview/
     ├── fine-tune参数解释.md
     └── paddle&tensorflow.md
 ```
+
 ### 来一个测试环境
+
 ```shell
 pip freeze > requirements.txt
 conda create -n myPlot python=3.11
 conda activate myPlot
 pip install -r requirements.txt --proxy=127.0.0.1:10809
 ```
+
 ### 必备知识
+
 在阅读本文前，建议补充一些相关知识。若你之前未了解过相关原理，可以参考以下的链接：
 
-* [github库](https://github.com/aceliuchanghong/large_scale_models_learning_log)
+* [最小的算法题库](https://github.com/aceliuchanghong/myLeetCode)
+* [自己的大模型学习记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
 
 ### 吐槽
+
 ```text
 大模型这方向真的卷,新paper,新模型疯狂出,东西出的比我读的还快.
 ```
