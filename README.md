@@ -32,7 +32,7 @@ FAQ_Of_LLM_Interview/
 │   ├── atom.md
 │   ├── pdd.md
 │   ├── 任意子智能.md
-│   ├── 上海火炬电子科技.md
+│   ├── torch.md
 │   └── 联通.md
 └── langchain/
     ├── GPT&Bert.md
