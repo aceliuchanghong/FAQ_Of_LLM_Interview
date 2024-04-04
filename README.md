@@ -65,6 +65,10 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 * [最小的算法题库](https://github.com/aceliuchanghong/myLeetCode)
 * [自己的大模型学习记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
 
+### 特别鸣谢
+- [张老师](https://github.com/zyxcambridge)(提供了此库的最开始的思路,没有他就没有此库)
+- [赵老师](https://未提供链接,hh.com)(无偿回答了我很多问题,给我指明了部分方向)
+
 ### 吐槽
 
 ```text
