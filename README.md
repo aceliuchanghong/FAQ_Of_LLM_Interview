@@ -30,10 +30,10 @@ FAQ_Of_LLM_Interview/
 │       └── LLM_Fine_Tuning.md
 ├── 3.interview_qa/
 │   ├── atom.md
+│   ├── liantong.md
 │   ├── pdd.md
-│   ├── 任意子智能.md
 │   ├── torch.md
-│   └── 联通.md
+│   └── txyz.md
 └── langchain/
     ├── GPT&Bert.md
     ├── LC&Extract.md
