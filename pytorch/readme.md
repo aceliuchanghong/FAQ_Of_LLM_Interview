@@ -41,6 +41,11 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 2.计算损失函数关于参数的梯度。
 3.根据梯度的反方向更新参数，减小损失函数的值。
 重复步骤2和步骤3，直到达到停止条件（如达到最大迭代次数、损失函数的变化小于某个阈值等）。
+
+设p为参数,J(p)是损失函数,那么参数更新公式是:p = p - lr * J'(p)
+目标函数 J(p) 关于参数 P的梯度将是损失函数（loss function）上升最快的方向。
+而我们要最小化loss，只需要将参数沿着梯度相反的方向前进一个步长，
+就可以实现目标函数（loss function）的下降
 ```
 
 ![img.png](..%2Fusing_files%2Fimg%2FPyTorch2%2Flinear%2Fimg.png)
