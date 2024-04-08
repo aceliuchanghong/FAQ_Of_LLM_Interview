@@ -3,7 +3,7 @@ LangChain Expression Language
 ### How
 1. 普通chain
 
-chain = prompt + model + output parser
+chain = prompt | model | output parser
 ```python
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate

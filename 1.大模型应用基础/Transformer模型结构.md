@@ -47,6 +47,7 @@ Multi-Head Attention
 2.多头可以使参数矩阵形成多个子空间，矩阵整体的size不变，只是改变了每个head对应的维度大小
 3.可以充分利用现代硬件并行计算的能力
 ```
+
 ![img_3.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_3.png)
 
 3. Transformer为什么Q和K使用不同的权重矩阵生成
@@ -56,8 +57,11 @@ Transformer 模型的自注意力机制中，Q（查询矩阵）K（键矩阵）
 实际上是为了对X进行线性变换，为了提升模型拟合能力
 def forward(self, q, k, v, mask=None):
 ```
+
 ![img_4.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_4.png)
+
 ![img.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg.png)
+
 ![img_8.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_8.png)
 
 4. 为什么要位置编码
@@ -68,7 +72,9 @@ def forward(self, q, k, v, mask=None):
 3.位置编码向量与输入embedding具有相同的维度（因此可以相加），并且使用正弦和余弦函数
 4.有相对位置编码（RPE）
 ```
+
 ![img_1.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_1.png)
+
 5. 为什么需要残差连接(Residual Connection)和层归一化(Layer Normalization)
 
 ```text
@@ -76,21 +82,25 @@ def forward(self, q, k, v, mask=None):
 层归一化：使得训练的模型更稳定，并且起到加快收敛速度的作用,且提高模型泛用能力
 Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得它们的均值接近0，方差接近1(意味着数据集呈现出标准正态分布)
 ```
+
 ![img_5.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_5.png)
 
 6. 为什么要用带掩码masked？
+
 ```text
 因为在机器翻译中，是一个先后顺序的过程，即翻译第i个单词时，我们只能看到第i-1
 及其之前的单词。通过 Masked 操作可以防止知道i+1 个及以后的单词
 ```
 
 7. Transformer架构与主导的 sequence transduction models有哪些不同之处？
+
 ```text
 传统的 sequence transduction models通常基于复杂的循环神经网络（RNN）或卷积神经网络（CNN）
 而Transformer完全依赖于注意力机制，摒弃了循环和卷积的使用。
 ```
 
 8. 简单讲一下Transformer中的残差结构以及意义
+
 ```text
 残差连接结构是指在每个子层（比如自注意力层和前馈神经网络层）的输入和输出之间添加一个跳跃连接，并通过残差连接将它们相加。
 这个结构的主要目的是解决深度神经网络中的梯度消失和梯度爆炸问题，从而更好地训练深层网络。
@@ -114,6 +124,7 @@ Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得
 ![img_12.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_12.png)
 
 9. 为什么transformer块使用LayerNorm而不是BatchNorm？LayerNorm 在Transformer的位置是哪里？
+
 ```text
 LN/BN
 自然语言处理任务中的输入序列长度通常是可变的。与BatchNorm不同，
@@ -123,20 +134,27 @@ Layer Norm 的作用是将每个样本的特征进行归一化，
 使得特征在不同样本之间具有相似的分布，有助于提高模型的训练效果和泛化能力。
 具体来说，Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得它们的均值接近0，方差接近1
 ```
+
 10. Encoder端和Decoder端是如何进行交互的
+
 ```text
 Encoder端和Decoder端通过注意力机制进行交互，以便Decoder端能够利用Encoder端对输入序列的信息进行编码。
 通过转置encoder_ouput的seq_len维与depth维，进行矩阵两次乘法，
 即q*kT*v输出即可得到target_len维度的输出
 ```
+
 11. 前馈神经网络结构(Feed-Forward Neural Network)
+
 ```text
 是Transformer模型中的一个重要组成部分，用于对输入数据进行非线性变换。
 它由两个全连接层（即前馈神经网络）和一个激活函数组成
 线性变换：z = xW1 + b1
 ```
+
 ![img_6.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_6.png)
+
 12. 激活函数解释
+
 ```text
 激活函数的主要作用是提供网络的非线性建模能力。激活函数是必不可少的，因为没有激活函数，网络仅能够表示线性映射。
 当优化方法是基于梯度的时候，要保证可微性
@@ -145,8 +163,11 @@ Encoder端和Decoder端通过注意力机制进行交互，以便Decoder端能�
 2.Swish是一种激活函数，它在深度学习中常用于神经网络的非线性变换
 3.ReLU（Rectified Linear Unit）修正线性单元
 ```
+
 ![img_7.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_7.png)
+
 13. CNN和Transformer区别
+
 ```text
 CNN主要用于处理具有网格结构的数据，比如图像。它包含了卷积层、池化层和全连接层。
 
@@ -159,22 +180,17 @@ CNN主要用于处理具有网格结构的数据，比如图像。它包含了�
 全连接层（Fully Connected Layer）： 全连接层将卷积层或池化层的输出展开成一维向量，
 并通过权重矩阵与偏置项进行线性变换，然后应用激活函数，得到最终的分类结果。
 ```
+
 ![img_9.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_9.png)
 
-
 14. 梯度消失、爆炸
+
 ```text
 梯度消失与梯度爆炸其实是一种情况。两种情况下梯度消失经常出现，
 一是在深层网络中，二是采用了不合适的激活函数，比如sigmoid。
 梯度爆炸一般出现在深层网络和权值初始化值太大的情况下，下面分别从这两个角度分析梯度消失和爆炸的原因。
 从深层网络角度来讲，不同的层学习的速度差异很大，表现为网络中靠近输出的层学习的情况很好，靠近输入的层学习的很慢
 ```
-
-
-
-
-
-
 
 ### Reference(参考文档)
 

@@ -19,7 +19,7 @@ prompt.messages
 LangChain旨在帮助构建问答应用程序，以及更普遍的RAG应用程序
 ```
 
-![langchain_stack.png](..%2Fusing_files%2Fimgs%2FLangChain%2Flangchain_stack.png)
+![langchain_stack.png](..%2Fusing_files%2Fimg%2FLangChain%2Flangchain_stack.png)
 
 ### 典型的 RAG(Retrieval Augmented Generation 检索增强生成) 应用程序包括:
 
