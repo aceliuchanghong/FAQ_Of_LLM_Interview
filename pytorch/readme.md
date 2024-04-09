@@ -61,3 +61,4 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 * [常用的梯度下降算法](https://zhuanlan.zhihu.com/p/31630368)
 * [pytorch教学视频](https://www.bilibili.com/video/BV1TN411k7hT)
 * [配套代码ppt的github库](https://github.com/aceliuchanghong/Deep-Learning-with-PyTorch-Tutorials)
+* [pytorch很全的资料](https://github.com/aceliuchanghong/Pytorch-NLP)
