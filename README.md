@@ -19,6 +19,7 @@ FAQ_Of_LLM_Interview/
 │   ├── PyTorch从0开始编写Transformer.md
 │   ├── PyTorch搭建神经网络.md
 │   ├── Pytorch基本用法.md
+│   ├── RNN循环神经网络基础.md
 │   ├── Transformer模型结构.md
 │   ├── 大模型的泛化能力.md
 │   ├── 聚类.分类_算法.md
