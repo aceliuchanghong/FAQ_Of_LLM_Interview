@@ -15,7 +15,7 @@ FAQ_Of_LLM_Interview/
 ├── requirements.txt
 ├── 面试必问问题.md
 ├── 1.大模型应用基础/
-│   ├── CNN神经网络基础.md
+│   ├── CNN卷积神经网络基础.md
 │   ├── PyTorch从0开始编写Transformer.md
 │   ├── PyTorch搭建神经网络.md
 │   ├── Pytorch基本用法.md
@@ -40,6 +40,7 @@ FAQ_Of_LLM_Interview/
 └── langchain/
     ├── GPT&Bert.md
     ├── LC&Extract.md
+    ├── LangChain&Agents.md
     ├── LangChain&CSV.md
     ├── LangChain&LCEL.md
     ├── LangChain&SQL.md
@@ -66,7 +67,7 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 在阅读本文前，建议补充一些相关知识。若你之前未了解过相关原理，可以参考以下的链接：
 
 * [最小的算法题库](https://github.com/aceliuchanghong/myLeetCode)
-* [自己的大模型学习记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
+* [姐控的大模型执行记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
 
 ### 特别鸣谢
 - [张老师](https://github.com/zyxcambridge)(提供了此库的最开始的思路,没有他就没有此库)
