@@ -80,3 +80,6 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 ```text
 大模型这方向真的卷,新paper,新模型疯狂出,东西出的比我读的还快.
 ```
+
+### *Star History*
+![Star History Chart](https://api.star-history.com/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)
