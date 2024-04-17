@@ -34,17 +34,17 @@ word_2_index = {"<PAD>": 0, "<UNK>": 1}
 这样可以保持所有文本序列的长度一致，并且能够处理模型未见过的单词。
 ```
 
-Q8:
+Q8:Trainer的基础使用及原理
 
-Q9:
+Q9:基础组件之Model
 
-Q10:
+Q10:基础组件之Tokenizer
 
-Q11:
+Q11:基础组件之Datasets
 
-Q12:
+Q12:基础组件之Pipeline
 
-Q13:
+Q13:基础组件之Evalaute
 
 Q14:
 
@@ -59,7 +59,61 @@ Q18:
 Q19:
 
 
+```text
+PyTorch 是一个开源的机器学习库，它提供了丰富的工具和接口来构建和训练深度学习模型。下面是 PyTorch 的一些基本用法总结：
 
+张量创建和操作:
+
+使用 torch.tensor 创建张量:
+
+import torch
+x = torch.tensor([1.0, 2.0, 3.0])
+张量属性和操作:
+
+x.size()  # 获取张量的形状
+x.shape   # 也可以使用 shape 属性
+x.dtype   # 获取张量的数据类型
+张量运算:
+
+支持常见的数学运算:
+
+y = torch.tensor([4.0, 5.0, 6.0])
+z = x + y  # 张量相加
+广播机制:
+
+a = torch.tensor([[1.0, 2.0], [3.0, 4.0]])
+b = torch.tensor([1.0, 2.0])
+c = a + b  # 使用广播机制
+自动微分:
+
+使用 torch.autograd 追踪张量的计算历史:
+x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
+y = x**2
+y.backward(torch.ones_like(x))  # 对 y 求导
+模型构建和训练:
+
+定义神经网络模型:
+
+import torch.nn as nn
+class SimpleNet(nn.Module):
+    def __init__(self):
+        super(SimpleNet, self).__init__()
+        self.fc = nn.Linear(10, 1)
+    def forward(self, x):
+        return self.fc(x)
+训练模型:
+
+model = SimpleNet()
+criterion = nn.MSELoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
+for input, target in dataset:
+    optimizer.zero_grad()
+    output = model(input)
+    loss = criterion(output, target)
+    loss.backward()
+    optimizer.step()
+这些是 PyTorch 的一些基本用法，涵盖了张量操作、自动微分和模型构建训练等方面。
+```
 
 简单做一个交易分类
 ```python
