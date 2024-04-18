@@ -14,31 +14,46 @@ FAQ_Of_LLM_Interview/
 ├── README.md
 ├── requirements.txt
 ├── 面试必问问题.md
-├── 1.大模型应用基础/
+├── 1-大模型应用基础/
 │   ├── CNN卷积神经网络基础.md
 │   ├── PyTorch从0开始编写Transformer.md
 │   ├── PyTorch搭建神经网络.md
 │   ├── Pytorch基本用法.md
 │   ├── RNN循环神经网络基础.md
 │   ├── Transformer模型结构.md
+│   ├── Yolo基础知识了解.md
 │   ├── 大模型的泛化能力.md
 │   ├── 聚类.分类_算法.md
 │   └── 训练与推理.md
-├── 2.大模型优化技术/
+├── 2-大模型优化技术/
 │   ├── 常见大模型调用代码.md
 │   ├── 微调优化.md
 │   └── fine_tune/
 │       ├── LLM_Fine_Tuning.ipynb
 │       └── LLM_Fine_Tuning.md
-├── 3.interview_qa/
+├── 3-interview_qa/
 │   ├── ant.md
 │   ├── atom.md
 │   ├── liantong.md
 │   ├── pdd.md
+│   ├── relx.md
 │   ├── saikai.md
 │   ├── torch.md
 │   ├── txyz.md
 │   └── ucloud.md
+├── 4-分布式训练篇/
+│   ├── Accelerate-使用进阶.md
+│   ├── DataParallel原理与应用.md
+│   ├── Distributed-DataParallel分布式数据并行原理与应用.md
+│   ├── README.md
+│   └── 分布式训练与环境配置.md
+├── 5-高效微调篇/
+│   ├── Lora 原理与实战.md
+│   ├── P-Tuning 原理与实战.md
+│   ├── PEFT 进阶操作.md
+│   ├── Prefix-Tuning 原理与实战.md
+│   ├── Prompt-Tuning原理与实战.md
+│   └── README.md
 └── langchain/
     ├── GPT&Bert.md
     ├── LC&Extract.md
