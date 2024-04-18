@@ -76,10 +76,17 @@ DeepSpeed是微软开发的一个深度学习优化库,主要用于训练超大�
 2.高效的大batch训练:DeepSpeed优化了训练循环,提供了高效的数据预取、转发、梯度累积等功能,可以支持非常大的batch size训练,显著提升训练吞吐。
 ```
 
+12. ffn
+```text
+每一层经过attention之后，还会有一个FFN，
+这个FFN的作用就是空间变换。FFN包含了2层linear transformation层，中间的激活函数是ReLu。
+```
+![img_10.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_10.png)
 
-
-
-
+13. 多模态
+```text
+多模态指的是多种模态的信息，包括：文本、图像、视频、音频等
+```
 
 汗流浃背,还得多学习,多做做
 
