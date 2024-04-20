@@ -61,16 +61,33 @@ tensor([[-1.2605, 0.6679, 1.0013],
 x = torch.eye(2,2) # 【单位矩阵 2*2】
 tensor([[1., 0.],
         [0., 1.]])
+
+# 生成一个形状为 (3, 3) 的张量，元素值在 0 到 9 之间
+random_int_tensor = torch.randint(low=0, high=10, size=(3, 3))
+tensor([[3, 5, 8],
+        [2, 0, 6],
+        [4, 7, 1]])
+
+# 将多个张量按照某个维度堆叠起来时
+tensor1 = torch.tensor([1, 2, 3])
+tensor2 = torch.tensor([4, 5, 6])
+# 使用 torch.stack 沿着新的维度（维度0）堆叠这两个张量
+stacked_tensor = torch.stack((tensor1, tensor2))
+tensor([[1, 2, 3],
+        [4, 5, 6]])
 ```
 
 Q1:pytorch 的 squeeze()? unsqueeze(),cat()
 
 ```python
 # 扩展 unsqueeze() 方法可以在指定维度上增加一个维度，从而扩展张量的形状。
-# 创建一个大小为 2 的张量
-tensor = torch.tensor([1, 2])
-# 在第一维度上增加一个维度
-expanded_tensor = tensor.unsqueeze(0)
+# 假设你有一个大小为 28x28 的灰度图像
+image = torch.randn(28, 28)
+# 但是 PyTorch 中要求通道维度在最前面，所以需要添加一个通道维度
+# 使用 unsqueeze 在索引 0 的位置添加一个维度
+# 现在图像的维度是 torch.Size([1, 28, 28])
+image_with_channel = image.unsqueeze(0)
+print(image_with_channel.shape)
 
 # squeeze() 用于删除张量中大小为 1 的维度。它的作用是压缩张量的维度，但并不改变张量中的元素数量
 # 创建一个大小为 1x3x1x2 的张量

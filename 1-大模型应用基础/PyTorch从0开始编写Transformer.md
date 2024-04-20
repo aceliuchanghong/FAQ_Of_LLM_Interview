@@ -26,9 +26,9 @@ Attention visualization
 
 ![img.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fwrite%2Fimg.png)
 
+![img_1.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_1.png)
 
-
-
+![img_1.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fwrite%2Fimg_1.png)
 
 
 
