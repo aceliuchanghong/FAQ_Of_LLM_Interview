@@ -1,7 +1,6 @@
 # 辅助的工具函数
 import time
 import pandas as pd
-import matplotlib.pyplot as plt
 import math
 import tiktoken
 import torch
@@ -12,13 +11,13 @@ from pytorch.transformer.config import parsers
 
 def readBook(filename='hongLouMeng.txt', path=None):
     """
-    读取pytorch/data/books/下面的小说
+    读取../data/books/下面的小说
     :param filename:
     :param path:
     :return:
     """
     if not path:
-        path = 'pytorch/data/books/'
+        path = '../data/books/'
     if not path + filename:
         print("no such books:" + path + filename)
         return
