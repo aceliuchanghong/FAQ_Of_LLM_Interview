@@ -5,9 +5,9 @@ from pytorch.transformer.utils import *
 # 获取参数
 args = parsers()
 # 读取文件
-text = readBook()
+text = read_book()
 # 变成token
-token, max_token_value = getToken(text)
+token, max_token_value = get_token(text, args.encoding)
 # 获取训练的数据 ==>split_train_and_valid此处是否有失偏颇?
 train_data, valid_data = split_train_and_valid(token)
 # 获取训练批次张量数据
@@ -185,35 +185,27 @@ if __name__ == '__main__':
     best_model_state = None
     start = time.time()
     for step in range(args.max_iters):
-        if step % args.eval_iters == 0 or step == args.max_iters - 1:
+        if step % args.eval_interval == 0 or step == args.max_iters - 1:
             losses = estimate_loss()
             tracked_losses.append(losses)
             print('Step:', step, 'Training Loss:', round(losses['train'].item(), 3), 'Validation Loss:',
                   round(losses['valid'].item(), 3))
-
         if step % 2000 == 0 and step > 0:
-            # Save the model state dictionary every 500 steps
             torch.save(model.state_dict(), f'model/model-ckpt-step{step}.pt')
-
         if losses['valid'].item() < best_loss:
             best_loss = losses['valid'].item()
             best_model_state = model.state_dict()
-
         xb, yb = get_batch('train')
         logits, loss = model(xb, yb)
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         optimizer.step()
-
-    # Save the best model state dictionary
     torch.save(best_model_state, 'model/best_model-ckpt.pt')
     end = time.time()
     print(f"运行时间：{(end - start) / 60 % 60:.4f}分")
-
-    # Generate
     model.eval()
     start = '宝玉和林妹妹正吃着酒,'
-    encoding = tiktoken.get_encoding("cl100k_base")
+    encoding = tiktoken.get_encoding(args.encoding)
     start_ids = encoding.encode(start)
     x = (torch.tensor(start_ids, dtype=torch.long, device=args.device)[None, ...])
     y = model.generate(x, max_new_tokens=200)

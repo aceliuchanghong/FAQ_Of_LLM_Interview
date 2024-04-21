@@ -9,32 +9,27 @@ import torch.nn as nn
 from pytorch.transformer.config import parsers
 
 
-def readBook(filename='hongLouMeng.txt', path=None):
-    """
-    读取../data/books/下面的小说
-    :param filename:
-    :param path:
-    :return:
-    """
+def read_book(filename='hongLouMeng.txt', path=None):
+    args = parsers()
     if not path:
-        path = '../data/books/'
+        path = args.data_path
     if not path + filename:
         print("no such books:" + path + filename)
         return
     with open(path + filename, 'r', encoding='utf-8') as f:
         text = f.read()
-
     return text
 
 
 # TOKEN化文字 此处使用openai的tiktoken
-def getToken(text):
+def get_token(text, encoding):
     """
     文字转TOKEN
     :param text:
+    :param encoding:
     :return:
     """
-    encoding = tiktoken.get_encoding("cl100k_base")
+    encoding = tiktoken.get_encoding(encoding)
     tokenized_text = encoding.encode(text)
     # token先转化为张量
     tokenized_text = torch.tensor(tokenized_text, dtype=torch.long)
@@ -79,7 +74,7 @@ def prepare_training_batch(train_data):
     # x_batch = torch.stack([data[idx:idx + args.context_length] for idx in idxs])
     # y_batch = torch.stack([data[idx + 1:idx + args.context_length + 1] for idx in idxs])
     # print(pd.DataFrame(x_batch[0].numpy()))
-    print(idxs)
+    # print(idxs)
     return x_batch, y_batch
 
 
@@ -140,9 +135,9 @@ def addPositionalEncoding(x_batch_embedding, y_batch_embedding):
 if __name__ == '__main__':
     args = parsers()
     # 读取文件
-    text = readBook("sales_textbook.txt", path="../data/books/")
+    text = read_book("sales_textbook.txt", path="../data/books/")
     # 变成token
-    token, max_token_value = getToken(text)
+    token, max_token_value = get_token(text, args.encoding)
     # 获取训练的数据
     train_data, valid_data = split_train_and_valid(token)
     # 获取训练批次张量数据
