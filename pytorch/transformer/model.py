@@ -153,10 +153,6 @@ class Model(nn.Module):
         return idx
 
 
-model = Model()
-model = model.to(arg.device)
-
-
 def get_batch(split: str):
     data = train_data if split == 'train' else valid_data
     idxs = torch.randint(low=0, high=len(data) - arg.context_length, size=(arg.batch_size,))
@@ -181,32 +177,35 @@ def estimate_loss():
     return out
 
 
-# Use AdamW optimizer
-optimizer = torch.optim.AdamW(params=model.parameters(), lr=arg.learning_rate)
-tracked_losses = list()
-for step in range(arg.max_iters):
-    if step % arg.eval_iters == 0 or step == arg.max_iters - 1:
-        losses = estimate_loss()
-        tracked_losses.append(losses)
-        print('Step:', step, 'Training Loss:', round(losses['train'].item(), 3), 'Validation Loss:',
-              round(losses['valid'].item(), 3))
+if __name__ == '__main__':
+    model = Model()
+    model = model.to(arg.device)
+    # Use AdamW optimizer
+    optimizer = torch.optim.AdamW(params=model.parameters(), lr=arg.learning_rate)
+    tracked_losses = list()
+    for step in range(arg.max_iters):
+        if step % arg.eval_iters == 0 or step == arg.max_iters - 1:
+            losses = estimate_loss()
+            tracked_losses.append(losses)
+            print('Step:', step, 'Training Loss:', round(losses['train'].item(), 3), 'Validation Loss:',
+                  round(losses['valid'].item(), 3))
 
-    xb, yb = get_batch('train')
-    logits, loss = model(xb, yb)
-    optimizer.zero_grad(set_to_none=True)
-    loss.backward()
-    optimizer.step()
+        xb, yb = get_batch('train')
+        logits, loss = model(xb, yb)
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        optimizer.step()
 
-# Save the model state dictionary
-torch.save(model.state_dict(), 'model-ckpt.pt')
+    # Save the model state dictionary
+    torch.save(model.state_dict(), 'model-ckpt.pt')
 
-# Generate
-model.eval()
-start = '宝玉和林妹妹正吃着酒,'
-encoding = tiktoken.get_encoding("cl100k_base")
-start_ids = encoding.encode(start)
-x = (torch.tensor(start_ids, dtype=torch.long, device=arg.device)[None, ...])
-y = model.generate(x, max_new_tokens=100)
-print('---------------')
-print(encoding.decode(y[0].tolist()))
-print('---------------')
+    # Generate
+    model.eval()
+    start = '宝玉和林妹妹正吃着酒,'
+    encoding = tiktoken.get_encoding("cl100k_base")
+    start_ids = encoding.encode(start)
+    x = (torch.tensor(start_ids, dtype=torch.long, device=arg.device)[None, ...])
+    y = model.generate(x, max_new_tokens=100)
+    print('---------------')
+    print(encoding.decode(y[0].tolist()))
+    print('---------------')

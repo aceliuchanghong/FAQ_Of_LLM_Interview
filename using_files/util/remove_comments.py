@@ -33,5 +33,5 @@ def remove_comments(input_file):
 
 
 if __name__ == '__main__':
-    input_file = '../../pytorch/transformer/config.py'
+    input_file = '../../pytorch/transformer/model.py'
     remove_comments(input_file)
