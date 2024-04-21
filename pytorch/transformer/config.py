@@ -13,7 +13,7 @@ def parsers():
     parser.add_argument("--d_model", type=int, default=128, help="文字的维度")
     parser.add_argument("--batch_size", type=int, default=4, help="训练批次")
 
-    parser.add_argument("--num_layers", type=int, default=8, help="Number of transformer blocks")
+    parser.add_argument("--num_blocks", type=int, default=8, help="Number of transformer blocks")
     parser.add_argument("--num_heads", type=int, default=4, help="Number of heads in Multi-head attention")
     parser.add_argument("--learning_rate", type=float, default=1e-3, help="Learning rate")
     parser.add_argument("--dropout", type=float, default=0.1, help="Dropout rate")
