@@ -56,7 +56,10 @@ class ScaledDotProductAttention(nn.Module):
         # //是整数除法运算符，它会返回不大于结果的最大整数 这儿除num_heads是因为多头其实就是维度切分
         attention = Q @ K.transpose(-2, -1) / math.sqrt(arg.d_model // arg.num_heads)
 
-        attention = attention.masked_fill(self.mask == 0, float('-inf'))
+        # Create a mask with the same shape as attention
+        mask = torch.tril(torch.ones(x.size(1), x.size(1))).to(x.device)
+        attention = attention.masked_fill(mask == 0, float('-inf'))
+
         attention = F.softmax(attention, dim=-1)
         attention = attention @ V
         return attention
@@ -99,6 +102,7 @@ class TransformerBlock(nn.Module):
 class Model(nn.Module):
     def __init__(self):
         super().__init__()
+        self.context_length = arg.context_length
         self.token_embedding_lookup_table = nn.Embedding(max_token_value + 1, arg.d_model)
         self.transformer_blocks = nn.Sequential(*(
                 [TransformerBlock() for _ in range(arg.num_blocks)] +
@@ -198,7 +202,7 @@ torch.save(model.state_dict(), 'model-ckpt.pt')
 
 # Generate
 model.eval()
-start = 'The salesperson'
+start = '宝玉和林妹妹正吃着酒,'
 encoding = tiktoken.get_encoding("cl100k_base")
 start_ids = encoding.encode(start)
 x = (torch.tensor(start_ids, dtype=torch.long, device=arg.device)[None, ...])
