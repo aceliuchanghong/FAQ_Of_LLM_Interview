@@ -24,10 +24,10 @@ def generate_text(prompt, max_new_tokens):
     return generated_text
 
 
-# Example usage
-prompt = '宝玉和林妹妹正吃着酒,'
+prompt = '黛玉道：“你来做什么？”宝玉笑道：'
+prompt2 = '第五十回 薛小妹新编怀古诗'
 max_new_tokens = 300
-generated_text = generate_text(prompt, max_new_tokens)
+generated_text = generate_text(prompt2, max_new_tokens)
 print('---------------')
 print(generated_text)
 print('---------------')

@@ -74,7 +74,12 @@ def prepare_training_batch(train_data):
     # x_batch和y_batch中的每个批次都有args.context_length个长度
     x_batch = torch.stack([data[idx:idx + args.context_length] for idx in idxs])
     y_batch = torch.stack([data[idx + 1:idx + args.context_length + 1] for idx in idxs])
+
+    # idxs = torch.arange(0, len(data) - args.context_length - 1, args.context_length - 1)
+    # x_batch = torch.stack([data[idx:idx + args.context_length] for idx in idxs])
+    # y_batch = torch.stack([data[idx + 1:idx + args.context_length + 1] for idx in idxs])
     # print(pd.DataFrame(x_batch[0].numpy()))
+    print(idxs)
     return x_batch, y_batch
 
 

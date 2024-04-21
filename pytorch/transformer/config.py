@@ -21,6 +21,7 @@ def parsers():
     parser.add_argument("--eval_interval", type=int, default=50, help="How often to evaluate the model")
     parser.add_argument("--eval_iters", type=int, default=20,
                         help="How many iterations to average the loss over when evaluating the model")
+    parser.add_argument("--num_epochs", type=int, default=10, help="迭代次数")
     # 设备选择参数
     parser.add_argument("--device", type=str, default='cuda' if torch.cuda.is_available() else 'cpu',
                         help="设备信息")
