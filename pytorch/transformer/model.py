@@ -193,7 +193,7 @@ if __name__ == '__main__':
             print('Step:', step, 'Training Loss:', round(losses['train'].item(), 3), 'Validation Loss:',
                   round(losses['valid'].item(), 3))
 
-        if step % 500 == 0 and step > 0:
+        if step % 2000 == 0 and step > 0:
             # Save the model state dictionary every 500 steps
             torch.save(model.state_dict(), f'model/model-ckpt-step{step}.pt')
 
