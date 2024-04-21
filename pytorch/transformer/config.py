@@ -17,7 +17,7 @@ def parsers():
     parser.add_argument("--num_heads", type=int, default=4, help="Number of heads in Multi-head attention")
     parser.add_argument("--learning_rate", type=float, default=1e-4, help="Learning rate")
     parser.add_argument("--dropout", type=float, default=0.1, help="Dropout rate")
-    parser.add_argument("--max_iters", type=int, default=20000, help="Total of training iterations")
+    parser.add_argument("--max_iters", type=int, default=8000, help="Total of training iterations")
     parser.add_argument("--eval_interval", type=int, default=50, help="How often to evaluate the model")
     parser.add_argument("--eval_iters", type=int, default=20,
                         help="How many iterations to average the loss over when evaluating the model")

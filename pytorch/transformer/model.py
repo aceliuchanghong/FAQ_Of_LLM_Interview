@@ -183,6 +183,9 @@ if __name__ == '__main__':
     # Use AdamW optimizer
     optimizer = torch.optim.AdamW(params=model.parameters(), lr=arg.learning_rate)
     tracked_losses = list()
+    best_loss = float('inf')
+    best_model_state = None
+    start = time.time()
     for step in range(arg.max_iters):
         if step % arg.eval_iters == 0 or step == arg.max_iters - 1:
             losses = estimate_loss()
@@ -190,14 +193,24 @@ if __name__ == '__main__':
             print('Step:', step, 'Training Loss:', round(losses['train'].item(), 3), 'Validation Loss:',
                   round(losses['valid'].item(), 3))
 
+        if step % 500 == 0 and step > 0:
+            # Save the model state dictionary every 500 steps
+            torch.save(model.state_dict(), f'model/model-ckpt-step{step}.pt')
+
+        if losses['valid'].item() < best_loss:
+            best_loss = losses['valid'].item()
+            best_model_state = model.state_dict()
+
         xb, yb = get_batch('train')
         logits, loss = model(xb, yb)
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         optimizer.step()
 
-    # Save the model state dictionary
-    torch.save(model.state_dict(), 'model-ckpt.pt')
+    # Save the best model state dictionary
+    torch.save(best_model_state, 'model/best_model-ckpt.pt')
+    end = time.time()
+    print(f"运行时间：{(end - start) / 60 % 60:.4f}分")
 
     # Generate
     model.eval()
@@ -205,7 +218,7 @@ if __name__ == '__main__':
     encoding = tiktoken.get_encoding("cl100k_base")
     start_ids = encoding.encode(start)
     x = (torch.tensor(start_ids, dtype=torch.long, device=arg.device)[None, ...])
-    y = model.generate(x, max_new_tokens=100)
+    y = model.generate(x, max_new_tokens=200)
     print('---------------')
     print(encoding.decode(y[0].tolist()))
     print('---------------')

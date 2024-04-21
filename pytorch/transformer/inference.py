@@ -5,7 +5,7 @@ from model import Model
 from pytorch.transformer.config import parsers
 
 arg = parsers()
-model_path = 'model-ckpt.pt'
+model_path = 'model/model-ckpt-step500.pt'
 device = arg.device
 
 # Load the pre-trained model
