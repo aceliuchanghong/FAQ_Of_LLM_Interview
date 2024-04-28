@@ -1,22 +1,10 @@
 ### LangChain
 
-- Chains
+- Chain
 ```text
 链是指调用序列 - 无论是对 LLM、 工具还是数据预处理步骤。支持的主要方法是使用 LCEL
 1.create_retrieval_chain
 2.create_sql_query_chain
-```
-- Agents
-```python
-from langchain import hub
-
-# 系统的 prompt==>Agents (我理解)
-prompt = hub.pull("hwchase17/openai-functions-agent")
-prompt.messages
-```
-- Advanced Retrieval Strategies
-```text
-LangChain旨在帮助构建问答应用程序，以及更普遍的RAG应用程序
 ```
 
 ![langchain_stack.png](..%2Fusing_files%2Fimg%2FLangChain%2Flangchain_stack.png)
