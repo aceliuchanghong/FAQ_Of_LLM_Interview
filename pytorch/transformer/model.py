@@ -185,8 +185,8 @@ if __name__ == '__main__':
     best_model_state = None
     start = time.time()
     for step in range(args.max_iters):
+        losses = estimate_loss()
         if step % args.eval_interval == 0 or step == args.max_iters - 1:
-            losses = estimate_loss()
             tracked_losses.append(losses)
             print('Step:', step, 'Training Loss:', round(losses['train'].item(), 3), 'Validation Loss:',
                   round(losses['valid'].item(), 3))
