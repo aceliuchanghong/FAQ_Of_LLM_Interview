@@ -1,11 +1,9 @@
-# 辅助的工具函数
 import time
-import pandas as pd
 import math
 import tiktoken
 import torch
 import torch.nn as nn
-
+from torch.utils.data import DataLoader, TensorDataset
 from pytorch.transformer.config import parsers
 
 
@@ -60,21 +58,17 @@ def prepare_training_batch(train_data):
     """
     args = parsers()
     data = train_data
-    # 采用了torch.randint函数来生成一组随机整数索引 low参数指定了索引的下界，即最小可能值为0
-    # 最大可能值为len(train_data) - args.context_length - 1，这是为了避免索引超出数据集范围并且保证每个样本都有足够的上下文可供训练
-    # (args.batch_size,)，生成了一个长度为args.batch_size的一维数组。
-    # tensor([61887, 64152, 29136, 48336])
-    idxs = torch.randint(low=0, high=len(data) - args.context_length - 1, size=(args.batch_size,))
 
-    # x_batch和y_batch中的每个批次都有args.context_length个长度
+    # tensor([61887, 64152, 29136, 48336])
+    # 确保idxs中没有重复的索引
+    idxs = torch.unique(torch.randint(low=0, high=len(data) - args.context_length - 1, size=(args.batch_size,)))
+    while len(idxs) < args.batch_size:
+        new_idx = torch.randint(low=0, high=len(data) - args.context_length - 1, size=(1,))
+        idxs = torch.unique(torch.cat([idxs, new_idx]))
+
     x_batch = torch.stack([data[idx:idx + args.context_length] for idx in idxs])
     y_batch = torch.stack([data[idx + 1:idx + args.context_length + 1] for idx in idxs])
 
-    # idxs = torch.arange(0, len(data) - args.context_length - 1, args.context_length - 1)
-    # x_batch = torch.stack([data[idx:idx + args.context_length] for idx in idxs])
-    # y_batch = torch.stack([data[idx + 1:idx + args.context_length + 1] for idx in idxs])
-    # print(pd.DataFrame(x_batch[0].numpy()))
-    # print(idxs)
     return x_batch, y_batch
 
 
@@ -133,6 +127,7 @@ def addPositionalEncoding(x_batch_embedding, y_batch_embedding):
 
 
 if __name__ == '__main__':
+    start = time.time()
     args = parsers()
     # 读取文件
     text = read_book("sales_textbook.txt", path="../data/books/")
@@ -142,13 +137,14 @@ if __name__ == '__main__':
     train_data, valid_data = split_train_and_valid(token)
     # 获取训练批次张量数据
     x_batch, y_batch = prepare_training_batch(train_data)
-    # embedding
-    x_batch_embedding, y_batch_embedding = getInputEmbedding(max_token_value, x_batch, y_batch)
-    # 增加位置信息
 
-    start = time.time()
-    x, y = addPositionalEncoding(x_batch_embedding, y_batch_embedding)
+    print(len(x_batch), y_batch)
+    # # embedding
+    # x_batch_embedding, y_batch_embedding = getInputEmbedding(max_token_value, x_batch, y_batch)
+    # # 增加位置信息
+    # x, y = addPositionalEncoding(x_batch_embedding, y_batch_embedding)
+
     end = time.time()
     print(f"运行时间：{(end - start) / 60 % 60:.4f}分({end - start:.4f}秒)")
 
-    print(x.shape, y.shape)
+    # print(x.shape, y.shape)

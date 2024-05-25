@@ -10,10 +10,6 @@ text = read_book()
 token, max_token_value = get_token(text, args.encoding)
 # 获取训练的数据 ==>split_train_and_valid此处是否有失偏颇?
 train_data, valid_data = split_train_and_valid(token)
-# 获取训练批次张量数据
-x_batch, y_batch = prepare_training_batch(train_data)
-# embedding
-x_batch_embedding, y_batch_embedding = getInputEmbedding(max_token_value, x_batch, y_batch)
 
 
 class FeedForwardNetwork(nn.Module):
@@ -153,7 +149,12 @@ class Model(nn.Module):
 
 def get_batch(split: str):
     data = train_data if split == 'train' else valid_data
-    idxs = torch.randint(low=0, high=len(data) - args.context_length, size=(args.batch_size,))
+    # idxs = torch.unique(torch.randint(low=0, high=len(data) - args.context_length - 1, size=(args.batch_size,)))
+    idxs = torch.unique(torch.randint(low=0, high=len(data) - args.context_length - 1, size=(args.batch_size,)))
+    while len(idxs) < args.batch_size:
+        new_idx = torch.randint(low=0, high=len(data) - args.context_length - 1, size=(1,))
+        idxs = torch.unique(torch.cat([idxs, new_idx]))
+
     x = torch.stack([data[idx:idx + args.context_length] for idx in idxs]).to(args.device)
     y = torch.stack([data[idx + 1:idx + args.context_length + 1] for idx in idxs]).to(args.device)
     return x, y

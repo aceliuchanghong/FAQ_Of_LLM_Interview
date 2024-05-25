@@ -3,14 +3,10 @@ import torch
 
 
 def parsers():
-    """
-    超参数设定
-    :return:
-    """
     parser = argparse.ArgumentParser(description="sisconsavior's model args")
     parser.add_argument("--context_length", type=int, default=128, help="最长的token的个数")
     parser.add_argument("--d_model", type=int, default=512, help="文字的维度")
-    parser.add_argument("--batch_size", type=int, default=16, help="训练批次")
+    parser.add_argument("--batch_size", type=int, default=512, help="训练批次")
     parser.add_argument("--num_blocks", type=int, default=8, help="Number of transformer blocks")
     parser.add_argument("--num_heads", type=int, default=4, help="Number of heads in Multi-head attention")
     parser.add_argument("--learning_rate", type=float, default=1e-4, help="Learning rate")
