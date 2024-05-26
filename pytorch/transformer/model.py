@@ -1,6 +1,6 @@
 import torch.nn.functional as F
-
 from pytorch.transformer.utils import *
+import pandas as pd
 
 # 获取参数
 args = parsers()
@@ -8,24 +8,8 @@ args = parsers()
 text = read_book()
 # 变成token
 token, max_token_value = get_token(text, args.encoding)
-# 获取训练的数据 ==>split_train_and_valid此处是否有失偏颇?
+# 获取训练的数据
 train_data, valid_data = split_train_and_valid(token)
-
-
-class FeedForwardNetwork(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.d_model = args.d_model
-        self.dropout = args.dropout
-        self.ffn = nn.Sequential(
-            nn.Linear(in_features=self.d_model, out_features=self.d_model * 4),
-            nn.ReLU(),
-            nn.Linear(in_features=self.d_model * 4, out_features=self.d_model),
-            nn.Dropout(args.dropout),
-        )
-
-    def forward(self, x):
-        return self.ffn(x)
 
 
 class ScaledDotProductAttention(nn.Module):
@@ -40,22 +24,27 @@ class ScaledDotProductAttention(nn.Module):
         self.register_buffer('mask', torch.tril(torch.ones(args.context_length, args.context_length)))
 
     def forward(self, x):
-        # Q = x @ self.Wq
-        # K = x @ self.Wk
-        # V = x @ self.Wv
         Q = self.Wq(x)
         K = self.Wk(x)
         V = self.Wv(x)
-
         # //是整数除法运算符，它会返回不大于结果的最大整数 这儿除num_heads是因为多头其实就是维度切分
         attention = Q @ K.transpose(-2, -1) / math.sqrt(args.d_model // args.num_heads)
-
-        # Create a mask with the same shape as attention
+        attention0 = attention
+        # apply mask
         mask = torch.tril(torch.ones(x.size(1), x.size(1))).to(x.device)
-        attention = attention.masked_fill(mask == 0, float('-inf'))
-
+        attention = attention.masked_fill(self.mask == 0, float('-inf'))
+        attention1 = attention
+        # apply softmax
         attention = F.softmax(attention, dim=-1)
         attention = attention @ V
+
+        print('mask:\n', mask, '\n',
+              'mask_shape:\n', mask.shape, '\n',
+              'Q @ K.transpose(-2, -1):\n', (Q @ K.transpose(-2, -1)).shape, '\n',
+              'attention0:', attention0.shape, '\n',
+              'attention1:\n', pd.DataFrame(attention1[0].detach().numpy()), attention1.shape, '\n',
+              )
+
         return attention
 
 
@@ -76,6 +65,42 @@ class MultiHeadAttention(nn.Module):
         out = self.dropout(out)
 
         return out
+
+
+class FeedForwardNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.d_model = args.d_model
+        self.dropout = args.dropout
+        self.ffn = nn.Sequential(
+            nn.Linear(in_features=self.d_model, out_features=self.d_model * 4),
+            nn.ReLU(),
+            nn.Linear(in_features=self.d_model * 4, out_features=self.d_model),
+            nn.Dropout(self.dropout),
+        )
+
+    def forward(self, x):
+        return self.ffn(x)
+
+
+""" 换一种写法
+class FeedForwardNetwork(nn.Module):
+    def __init__(self, d_model, dropout):
+        super().__init__()
+        self.d_model = d_model
+        self.dropout = dropout
+        self.linear1 = nn.Linear(in_features=self.d_model, out_features=self.d_model * 4)
+        self.relu = nn.ReLU()
+        self.linear2 = nn.Linear(in_features=self.d_model * 4, out_features=self.d_model)
+        self.dropout_layer = nn.Dropout(self.dropout)
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = self.relu(x)
+        x = self.linear2(x)
+        x = self.dropout_layer(x)
+        return x
+"""
 
 
 class TransformerBlock(nn.Module):

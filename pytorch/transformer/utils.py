@@ -3,7 +3,6 @@ import math
 import tiktoken
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader, TensorDataset
 from pytorch.transformer.config import parsers
 
 
@@ -68,7 +67,13 @@ def prepare_training_batch(train_data):
 
     x_batch = torch.stack([data[idx:idx + args.context_length] for idx in idxs])
     y_batch = torch.stack([data[idx + 1:idx + args.context_length + 1] for idx in idxs])
-
+    """
+    print('batch_size, sequence_length:', y_batch.size(), '\n',
+          x_batch[0], '\n',
+          'x_batch:', tiktoken.get_encoding(args.encoding).decode(x_batch[0].numpy()), '\n',
+          'y_batch:', tiktoken.get_encoding(args.encoding).decode(y_batch[0].numpy()), '\n',
+          len(idxs))
+    """
     return x_batch, y_batch
 
 
@@ -84,6 +89,10 @@ def getInputEmbedding(max_token_value, x_batch, y_batch):
     input_embedding_lookup_table = nn.Embedding(max_token_value + 1, args.d_model)
     x_batch_embedding = input_embedding_lookup_table(x_batch)
     y_batch_embedding = input_embedding_lookup_table(y_batch)
+    """
+    print("batch_size, sequence_length, d_model:", x_batch_embedding.shape, '\n',
+          'x_batch_embedding[0].shape:', x_batch_embedding[0].shape)
+    """
     return x_batch_embedding, y_batch_embedding
 
 
@@ -106,7 +115,6 @@ def addPositionalEncoding(x_batch_embedding, y_batch_embedding):
     # 然后 .unsqueeze(1): 这个方法是在张量的维度上增加一个新的维度。在这里，我们在维度 1 上增加了一个新的维度
     # 最后生成了一个形状为 (context_length, 1) 的张量 position,其中包含了从 0 到 context_length - 1 的序列,表示了序列中每个位置的索引
     position = torch.arange(0, args.context_length, dtype=torch.float).unsqueeze(1)
-
     # 一个从 0 开始、步长为 2、不超过 args.d_model 的整数序列
     div_term = torch.exp(torch.arange(0, args.d_model, 2).float() * (- math.log(10000.0) / args.d_model))
 
@@ -122,6 +130,7 @@ def addPositionalEncoding(x_batch_embedding, y_batch_embedding):
     x = x_batch_embedding + position_encoding_lookup_table
     y = y_batch_embedding + position_encoding_lookup_table
     # 每一句话的每一个单词的不同维度的权重
+    # import pandas as pd
     # print(pd.DataFrame(x[0].detach().numpy()))
     return x, y
 
@@ -130,21 +139,16 @@ if __name__ == '__main__':
     start = time.time()
     args = parsers()
     # 读取文件
-    text = read_book("sales_textbook.txt", path="../data/books/")
+    text = read_book("hongLouMeng.txt", path="../data/books/")
     # 变成token
     token, max_token_value = get_token(text, args.encoding)
     # 获取训练的数据
     train_data, valid_data = split_train_and_valid(token)
     # 获取训练批次张量数据
     x_batch, y_batch = prepare_training_batch(train_data)
-
-    print(len(x_batch), y_batch)
-    # # embedding
-    # x_batch_embedding, y_batch_embedding = getInputEmbedding(max_token_value, x_batch, y_batch)
-    # # 增加位置信息
-    # x, y = addPositionalEncoding(x_batch_embedding, y_batch_embedding)
-
+    # embedding
+    x_batch_embedding, y_batch_embedding = getInputEmbedding(max_token_value, x_batch, y_batch)
+    # 增加位置信息
+    x, y = addPositionalEncoding(x_batch_embedding, y_batch_embedding)
     end = time.time()
     print(f"运行时间：{(end - start) / 60 % 60:.4f}分({end - start:.4f}秒)")
-
-    # print(x.shape, y.shape)

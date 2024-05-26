@@ -1,5 +1,7 @@
 ## 卷积神经网络(Convolutional Neural Networks, CNN)
+
 ### What
+
 ```text
 卷积是微积分里的一个术语，指卷积运算
 Input是输入图片的像素矩阵，kernel是卷积核，选取一个滑动窗口，大小和卷积核一样，滑动窗口和卷积核进行点乘，得到的和作为输出像素值。
@@ -29,6 +31,51 @@ INPUT -> [CONV -> RELU -> CONV -> RELU -> POOL]*3 -> [FC -> RELU]*2 -> FC。
 
 ![img_4.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_4.png)
 
+```python
+import torch.nn as nn
+import torch.nn.functional as F
+
+class ConvolutionalNeuralNetwork(nn.Module):
+    def __init__(self):
+        super(ConvolutionalNeuralNetwork, self).__init__()
+        # 定义第一个卷积层
+        # 输入通道数为1，输出通道数为6，卷积核大小为5x5
+        self.conv1 = nn.Conv2d(1, 6, 5)
+        # 定义第二个卷积层
+        # 输入通道数为6，输出通道数为16，卷积核大小为5x5
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        # 定义第一个池化层
+        # 使用2x2的窗口进行最大池化
+        self.pool = nn.MaxPool2d(2, 2)
+        # 定义第一个全连接层
+        # 输入特征数为16*5*5，输出特征数为120
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        # 定义第二个全连接层
+        # 输入特征数为120，输出特征数为84
+        self.fc2 = nn.Linear(120, 84)
+        # 定义输出层
+        # 输入特征数为84，输出特征数为10（假设有10个类别）
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        # 第一层卷积 + ReLU + 池化
+        x = self.pool(F.relu(self.conv1(x)))
+        # 第二层卷积 + ReLU + 池化
+        x = self.pool(F.relu(self.conv2(x)))
+        # 将多维张量展平为一维
+        x = x.view(-1, 16 * 5 * 5)
+        # 第一个全连接层 + ReLU
+        x = F.relu(self.fc1(x))
+        # 第二个全连接层 + ReLU
+        x = F.relu(self.fc2(x))
+        # 输出层
+        x = self.fc3(x)
+        return x
+    
+# 创建CNN实例
+cnn = ConvolutionalNeuralNetwork()
+print(cnn)
+```
 
 ```text
 当我们谈论卷积运算时，可以将其比喻为一种“信息交互”的过程，就像两个人在沟通交流时相互影响、相互作用一样。
@@ -47,6 +94,7 @@ INPUT -> [CONV -> RELU -> CONV -> RELU -> POOL]*3 -> [FC -> RELU]*2 -> FC。
 ![img_2.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_2.png)
 
 1：单通道卷积
+
 ```text
 以单通道卷积为例，输入为（1,5,5），分别表示1个通道，宽为5，高为5。
 假设卷积核大小为3x3，padding=0，stride=1。
@@ -58,8 +106,8 @@ INPUT -> [CONV -> RELU -> CONV -> RELU -> POOL]*3 -> [FC -> RELU]*2 -> FC。
 
 ![img_3.png](..%2Fusing_files%2Fimg%2FCNN%2Fimg_3.png)
 
-
 2.多通道卷积1
+
 ```text
 以彩色图像为例，包含三个通道，分别表示RGB三原色的像素值，输入为（3,5,5），
 分别表示3个通道，每个通道的宽为5，高为5。
@@ -84,6 +132,7 @@ INPUT -> [CONV -> RELU -> CONV -> RELU -> POOL]*3 -> [FC -> RELU]*2 -> FC。
 ![img_5.png](..%2Fusing_files%2Fimg%2FCNN%2Fimg_5.png)
 
 3.多通道卷积2
+
 ```text
 在上面的多通道卷积1中，输出的卷积结果只有1个通道，把整个卷积的整个过程抽象表示，过程如下：
 ```
@@ -104,29 +153,28 @@ INPUT -> [CONV -> RELU -> CONV -> RELU -> POOL]*3 -> [FC -> RELU]*2 -> FC。
 ```python
 # 代码实现
 import torch
- 
-in_channels = 5  #输入通道数量
-out_channels =10 #输出通道数量
-width = 100      #每个输入通道上的卷积尺寸的宽
-heigth = 100     #每个输入通道上的卷积尺寸的高
-kernel_size = 3  #每个输入通道上的卷积尺寸
-batch_size = 1   #批数量
- 
-input = torch.randn(batch_size,in_channels,width,heigth)
-conv_layer = torch.nn.Conv2d(in_channels,out_channels,kernel_size=kernel_size)
- 
+
+in_channels = 5  # 输入通道数量
+out_channels = 10  # 输出通道数量
+width = 100  # 每个输入通道上的卷积尺寸的宽
+heigth = 100  # 每个输入通道上的卷积尺寸的高
+kernel_size = 3  # 每个输入通道上的卷积尺寸
+batch_size = 1  # 批数量
+
+input = torch.randn(batch_size, in_channels, width, heigth)
+conv_layer = torch.nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size)
+
 out_put = conv_layer(input)
- 
+
 print(input.shape)
 print(out_put.shape)
 print(conv_layer.weight.shape)
 ```
 
-
 ![img_8.png](..%2Fusing_files%2Fimg%2FCNN%2Fimg_8.png)
 
-
 ### 卷积层(Convolutional Layer)
+
 ```text
 CNN网络在前向传播的时候，让每个滤波器(卷积核)都在输入数据的宽度和高度上滑动（更精确地说是卷积），
 然后计算整个滤波器和输入数据任一处的内积。当滤波器沿着输入数据的宽度和高度滑过后，滤波器与滑动窗口进行点乘，
@@ -141,7 +189,9 @@ CNN网络在前向传播的时候，让每个滤波器(卷积核)都在输入数
 如果是灰度图像，则将二维矩阵(w x h)复制3次，变成(w x h x 3)；
 另一种是全转换为二维的灰度图像，像素值在0～255之间。
 ```
+
 1. 卷积层参数
+
 ```text
 1.步长(stride):
 卷积核(滤波器)在输入数据上进行滑动时的间隔像素。如果滤波器的步长大于1，会使输出数据的尺寸小于输入数据
@@ -165,6 +215,7 @@ CNN网络在前向传播的时候，让每个滤波器(卷积核)都在输入数
 那么每一层卷积核中的27个数字与分别与每一层样本对应相乘后得到一个和，一共有3层，对这3层的卷积结果再进行求和，得到第一个结果。
 依次进行，最终得到 4×4的结果。如果卷积核个数为2，即 2x 3x3x3，那么结果为 2x4x4。
 ```
+
 ![img_6.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_6.png)
 
 ![img_5.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_5.png)
@@ -195,6 +246,7 @@ CNN网络在前向传播的时候，让每个滤波器(卷积核)都在输入数
 ![convdemo.gif](..%2Fusing_files%2Fimg%2FPyTorch%2Fconvdemo.gif)
 
 3. 卷积层特点
+
 ```text
 1.大量的计算，网络的主要计算都产生在卷积层。
 2.具有平移不变性，对待检测物体进行平移，不影响检测效果
@@ -203,6 +255,7 @@ CNN网络在前向传播的时候，让每个滤波器(卷积核)都在输入数
 ```
 
 ### 池化层(Pooling Layer)
+
 ```text
 通常每个卷积层之后会紧跟Relu，激活需要学习的特征，连续的卷积层(包含Relu)之后，会插入一个池化层，
 池化层的作用是降维，主要是降低输出数据的空间尺寸(不改变深度)，这样也能减少网络的参数量，也能有效控制过拟合。
@@ -215,8 +268,8 @@ CNN网络在前向传播的时候，让每个滤波器(卷积核)都在输入数
 
 不使用池化层：池化层不是必须的，目前有一些方法可以替代池化层，比如卷积层中使用更大的步长来降低数据体的尺寸。
 ```
-![img.png](..%2Fusing_files%2Fimg%2FCNN%2Fimg.png)
 
+![img.png](..%2Fusing_files%2Fimg%2FCNN%2Fimg.png)
 
 ### 全连接层(Fully-Connected Layer)
 
@@ -240,6 +293,7 @@ fc = nn.Linear(in_features=input_size, out_features=50)
 ```
 
 经典CNN模型
+
 ```text
 LeNet-5,AlexNet,VGG-16,ResNet,GoogLeNet
 ```

@@ -21,3 +21,7 @@ inference.py
 ```
 utils.py
 ```
+
+### Reference(参考文档)
+
+- [llm张代码](https://github.com/waylandzhang/Transformer-from-scratch)
