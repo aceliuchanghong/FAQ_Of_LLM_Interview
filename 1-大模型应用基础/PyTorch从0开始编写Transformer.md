@@ -20,35 +20,22 @@ Training loop
 Validation loop
 Attention visualization
 ```
-目录:pytorch/transformer
+参看:pytorch/transformer
 
 先按照这个图片写,之后还会更新
 
 ![img.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fwrite%2Fimg.png)
 
+![img_11.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_11.png)
+
 ![img_1.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_1.png)
 
 ![img_1.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fwrite%2Fimg_1.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![img_12.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_12.png)
 
 ### Reference(参考文档)
-[论文:Attention Is All You Need](..%2Fusing_files%2Fpaper%2Fpytorch2transformer.pdf)
+* [论文:Attention Is All You Need](..%2Fusing_files%2Fpaper%2Fpytorch2transformer.pdf)
 * [论文](https://arxiv.org/abs/1706.03762)
 * [llm张-教学视频](https://www.bilibili.com/video/BV1CC411h7Ak/?spm_id_from=333.999.0.0&vd_source=5499ea66d45c9e767856755c37a77a97)
 * [youtube-PyTorch搭建Transformer视频](https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil)
