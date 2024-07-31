@@ -1,7 +1,7 @@
 ### 神经网络
 神经网络可以当做是能够拟合任意函数的黑盒子，只要训练数据足够，给定特定的x，就能得到希望的y，结构图如下：
 
-![img_1.png](..%2Fusing_files%2Fimg%2FRNN%2Fimg_1.png)
+![img_1.png](../using_files/img/RNN/img_1.png)
 
 ### Why need RNN?
 
@@ -36,11 +36,11 @@ RNN的问题与改进:
 为了提高计算效率，可以使用一些变种结构，如带有注意力机制的RNN或Transformer等。
 ```
 
-![img.png](..%2Fusing_files%2Fimg%2FRNN%2Fimg.png)
+![img.png](../using_files/img/RNN/img.png)
 
 也可以转化为:
 
-![img_3.png](..%2Fusing_files%2Fimg%2FRNN%2Fimg_3.png)
+![img_3.png](../using_files/img/RNN/img_3.png)
 
 ```text
 x是一个向量，它表示输入层的值
@@ -54,9 +54,9 @@ W:循环神经网络的隐藏层的值s不仅仅取决于当前这次的输入x�
 
 #### RNN的基本公式
 
-![img_2.png](..%2Fusing_files%2Fimg%2FRNN%2Fimg_2.png)
+![img_2.png](../using_files/img/RNN/img_2.png)
 
-![img_4.png](..%2Fusing_files%2Fimg%2FRNN%2Fimg_4.png)
+![img_4.png](../using_files/img/RNN/img_4.png)
 
 
 ### Reference(参考文档)

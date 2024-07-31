@@ -181,7 +181,7 @@ with torch.no_grad():
     
 model.train()
 ```
-![img.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg.png)
+![img.png](../using_files/img/PyTorch/img.png)
 
 ### Reference(参考文档)
 * [PyTorch搭建神经网络](https://zhuanlan.zhihu.com/p/631263095)

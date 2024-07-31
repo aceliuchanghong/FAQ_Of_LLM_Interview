@@ -1,6 +1,6 @@
 1. transformer模型结构图
 
-![d4e71cf9dbc29549dc93408bc7a4fcf.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fd4e71cf9dbc29549dc93408bc7a4fcf.png)
+![d4e71cf9dbc29549dc93408bc7a4fcf.png](../using_files/img/transformer/d4e71cf9dbc29549dc93408bc7a4fcf.png)
 
 ```text
 transformer的左半部分是encoder（编码器），右半部分是decoder（解码器）
@@ -35,7 +35,7 @@ softmax分类函数定义
 (什么叫注意力参考另外的文章)
 ```
 
-![img.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg.png)
+![img.png](../using_files/img/transformer/img.png)
 
 2. Transformer为何使用多头注意力机制
 
@@ -48,7 +48,7 @@ Multi-Head Attention
 3.可以充分利用现代硬件并行计算的能力
 ```
 
-![img_3.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_3.png)
+![img_3.png](../using_files/img/transformer/img_3.png)
 
 3. Transformer为什么Q和K使用不同的权重矩阵生成
 
@@ -58,11 +58,11 @@ Transformer 模型的自注意力机制中，Q（查询矩阵）K（键矩阵）
 def forward(self, q, k, v, mask=None):
 ```
 
-![img_4.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_4.png)
+![img_4.png](../using_files/img/transformer/img_4.png)
 
-![img.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg.png)
+![img.png](../using_files/img/transformer/img.png)
 
-![img_8.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_8.png)
+![img_8.png](../using_files/img/transformer/img_8.png)
 
 4. 为什么要位置编码
 
@@ -73,7 +73,7 @@ def forward(self, q, k, v, mask=None):
 4.有相对位置编码（RPE）
 ```
 
-![img_1.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_1.png)
+![img_1.png](../using_files/img/transformer/img_1.png)
 
 5. 为什么需要残差连接(Residual Connection)和层归一化(Layer Normalization)
 
@@ -83,7 +83,7 @@ def forward(self, q, k, v, mask=None):
 Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得它们的均值接近0，方差接近1(意味着数据集呈现出标准正态分布)
 ```
 
-![img_5.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_5.png)
+![img_5.png](../using_files/img/transformer/img_5.png)
 
 6. 为什么要用带掩码masked？
 
@@ -121,7 +121,7 @@ Layer Norm 将每个样本的每个特征维度的数值进行归一化，使得
 在深度学习模型中，通常会同时使用残差连接和激活函数，以提高模型的性能和训练效果。
 ```
 
-![img_12.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_12.png)
+![img_12.png](../using_files/img/PyTorch/img_12.png)
 
 9. 为什么transformer块使用LayerNorm而不是BatchNorm？LayerNorm 在Transformer的位置是哪里？
 
@@ -151,7 +151,7 @@ Encoder端和Decoder端通过注意力机制进行交互，以便Decoder端能�
 线性变换：z = xW1 + b1
 ```
 
-![img_6.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_6.png)
+![img_6.png](../using_files/img/transformer/img_6.png)
 
 12. 激活函数解释
 
@@ -164,7 +164,7 @@ Encoder端和Decoder端通过注意力机制进行交互，以便Decoder端能�
 3.ReLU（Rectified Linear Unit）修正线性单元
 ```
 
-![img_7.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_7.png)
+![img_7.png](../using_files/img/transformer/img_7.png)
 
 13. CNN和Transformer区别
 
@@ -181,7 +181,7 @@ CNN主要用于处理具有网格结构的数据，比如图像。它包含了�
 并通过权重矩阵与偏置项进行线性变换，然后应用激活函数，得到最终的分类结果。
 ```
 
-![img_9.png](..%2Fusing_files%2Fimg%2Ftransformer%2Fimg_9.png)
+![img_9.png](../using_files/img/transformer/img_9.png)
 
 14. 梯度消失、爆炸
 

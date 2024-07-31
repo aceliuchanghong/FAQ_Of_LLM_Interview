@@ -44,11 +44,11 @@ Stage 2:
 
 Stage 1:
 
-[my_movie_analysis_score.ipynb](..%2Fusing_files%2Fzip%2Fmy_movie_analysis_score.ipynb)
+[my_movie_analysis_score.ipynb](../using_files/zip/my_movie_analysis_score.ipynb)
 
 Stage 2:
 
-[my_movie_analysis_description_with_review.ipynb](..%2Fusing_files%2Fzip%2Fmy_movie_analysis_description_with_review.ipynb)
+[my_movie_analysis_description_with_review.ipynb](../using_files/zip/my_movie_analysis_description_with_review.ipynb)
 
 
 
@@ -56,11 +56,11 @@ Stage 2:
 
 增加微调记录
 
-[LLM_Fine_Tuning.ipynb](..%2F2.%B4%F3%C4%A3%D0%CD%D3%C5%BB%AF%BC%BC%CA%F5%2Ffine_tune%2FLLM_Fine_Tuning.ipynb)
+[LLM_Fine_Tuning.ipynb](../2.%B4%F3%C4%A3%D0%CD%D3%C5%BB%AF%BC%BC%CA%F5/fine_tune/LLM_Fine_Tuning.ipynb)
 
 显卡信息:
 
-![img_14.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_14.png)
+![img_14.png](../using_files/img/PyTorch/img_14.png)
 
 
 

@@ -20,7 +20,7 @@
 给定一个数组比如[1,1,2,3,5] 一个target值7,输出所有的加起来等于target的子数组,使用dfs解决
 ```
 
-[testPdd.py](..%2Fusing_files%2Ftest%2FtestPdd.py)
+[testPdd.py](../using_files/test/testPdd.py)
 
 ### 20240401问题解析:
 
@@ -64,7 +64,7 @@ One-shot Learning是Few-shot Learning的一种特殊情况
 在每个GPU训练step结束后，将每块GPU的损失梯度求平均，而不是每块GPU各计算各的。
 ```
 
-![img_13.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_13.png)
+![img_13.png](../using_files/img/PyTorch/img_13.png)
 
 ```text
 两种GPU训练方法：DataParallel和DistributedDataParallel：
@@ -206,7 +206,7 @@ model = SimpleCNN()
 
 Dropout到底有什么作用,有什么意义,公式呢?
 
-![img_15.png](..%2Fusing_files%2Fimg%2FPyTorch%2Fimg_15.png)
+![img_15.png](../using_files/img/PyTorch/img_15.png)
 
 ```python
 # 调整正则化系数调优,搜索最佳的dropout概率
@@ -291,7 +291,7 @@ print("Validation Accuracy with Best Model: ", accuracy)
 
 9. 微调细节看: 2.大模型优化技术/fine_tune/
 
-* [LLM_Fine_Tuning.ipynb](..%2F2.%B4%F3%C4%A3%D0%CD%D3%C5%BB%AF%BC%BC%CA%F5%2Ffine_tune%2FLLM_Fine_Tuning.ipynb)
+* [LLM_Fine_Tuning.ipynb](../2.%B4%F3%C4%A3%D0%CD%D3%C5%BB%AF%BC%BC%CA%F5/fine_tune/LLM_Fine_Tuning.ipynb)
 
 10. 模型到底要有多少参数,要有多少有效数据,这种怎么考虑呢?
 
@@ -342,7 +342,7 @@ total_params = sum(p.numel() for p in model.parameters())
 print("Total Parameters: ", total_params)
 # Total Parameters:  545098
 ```
-![img_9.png](..%2Fusing_files%2Fimg%2FCNN%2Fimg_9.png)
+![img_9.png](../using_files/img/CNN/img_9.png)
 
 ### Reference
 
