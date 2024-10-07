@@ -83,8 +83,9 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 
 在阅读本文前，建议补充一些相关知识。若你之前未了解过相关原理，可以参考以下的链接：
 
-* [最小的算法题库](https://github.com/aceliuchanghong/myLeetCode)
-* [姐控的大模型执行记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
+* [姐控的机器学习记录](https://github.com/aceliuchanghong/my_lm_log)
+* [[旧]最小的算法题库](https://github.com/aceliuchanghong/myLeetCode)
+* [[旧]姐控的大模型执行记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
 
 ### 特别鸣谢
 - [张老师](https://github.com/zyxcambridge)(提供了此库的最开始的思路,没有他就没有此库)
@@ -94,7 +95,6 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 
 ```text
 大模型这方向真的卷,新paper,新模型疯狂出,东西出的比我读的还快.
-欢迎有偿咨询:sisconsavior
 ```
 
 ### *Star History*
