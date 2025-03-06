@@ -55,7 +55,7 @@ for data in train_loader:
     optimizer.clear_grad()
 ```
 
-### Paddle(飞桨)
+### Tensorflow
 
 是一个Google开发的深度学习框架，常用api：
 
