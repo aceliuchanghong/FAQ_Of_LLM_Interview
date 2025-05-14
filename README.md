@@ -89,7 +89,8 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 
 ### 特别鸣谢
 - [张老师](https://github.com/zyxcambridge)(提供了此库的最开始的思路,没有他就没有此库)
-- [赵老师](https://未提供链接,hh.com)(无偿回答了我很多问题)
+- [赵老师](https://未提供链接,hh.com)(无偿回答了很多问题)
+- [Kesoft](https://github.com/Kesoft)(添加了pr)
 
 ### 吐槽
 
