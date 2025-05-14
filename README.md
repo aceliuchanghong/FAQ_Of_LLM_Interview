@@ -10,70 +10,72 @@
 ```text
 FAQ_Of_LLM_Interview/
 |
-├── LICENSE
-├── README.md
-├── requirements.txt
 ├── 面试必问问题.md
 ├── 1-大模型应用基础/
 │   ├── CNN卷积神经网络基础.md
+│   ├── GPT&Bert&T5.md
 │   ├── PyTorch从0开始编写Transformer.md
 │   ├── PyTorch搭建神经网络.md
 │   ├── Pytorch基本用法.md
 │   ├── RNN循环神经网络基础.md
 │   ├── Transformer模型结构.md
-│   ├── Yolo基础知识了解.md
+│   ├── Yolo基础知识.md
+│   ├── paddle.md
+│   ├── tensorflow.md
+│   ├── 向量数据库.md
 │   ├── 大模型的泛化能力.md
 │   ├── 聚类.分类_算法.md
-│   └── 训练与推理.md
+│   ├── 训练与推理.md
+│   └── image/
+│       └── GPT&Bert&T5/
 ├── 2-大模型优化技术/
 │   ├── 常见大模型调用代码.md
 │   ├── 微调优化.md
 │   └── fine_tune/
 │       ├── LLM_Fine_Tuning.ipynb
 │       └── LLM_Fine_Tuning.md
-├── 3-interview_qa/
-│   ├── ant.md
-│   ├── atom.md
-│   ├── liantong.md
-│   ├── pdd.md
-│   ├── relx.md
-│   ├── saikai.md
-│   ├── torch.md
-│   ├── txyz.md
-│   └── ucloud.md
+├── 3-面试问题记录/
+│   ├── 2024_interview_log/
+│   │   ├── ant.md
+│   │   ├── atom.md
+│   │   ├── liantong.md
+│   │   ├── pdd.md
+│   │   ├── relx.md
+│   │   ├── saikai.md
+│   │   ├── torch.md
+│   │   ├── txyz.md
+│   │   └── ucloud.md
+│   └── 2025_interview_log/
+│       └── 喆塔信息.md
 ├── 4-分布式训练篇/
 │   ├── Accelerate-使用进阶.md
 │   ├── DataParallel原理与应用.md
+│   ├── DeepSpeed.md
 │   ├── Distributed-DataParallel分布式数据并行原理与应用.md
 │   ├── README.md
 │   └── 分布式训练与环境配置.md
 ├── 5-高效微调篇/
+│   ├── LoRA..ETC.md
 │   ├── Lora 原理与实战.md
 │   ├── P-Tuning 原理与实战.md
 │   ├── PEFT 进阶操作.md
 │   ├── Prefix-Tuning 原理与实战.md
 │   ├── Prompt-Tuning原理与实战.md
-│   └── README.md
+│   ├── README.md
+│   └── fine-tune参数解释.md
 └── langchain/
-    ├── GPT&Bert.md
     ├── LC&Extract.md
     ├── LangChain&Agents.md
     ├── LangChain&CSV.md
     ├── LangChain&LCEL.md
     ├── LangChain&SQL.md
     ├── LangChain&Server&Cli.md
-    ├── LangChain.md
-    ├── LoRA..ETC.md
-    ├── Pinecone&Faiss&Chroma.md
-    ├── Pytorch&DeepSpeed.md
-    ├── fine-tune参数解释.md
-    └── paddle&tensorflow.md
+    └── LangChain.md
 ```
 
 ### 来一个测试环境
 
 ```shell
-pip freeze > requirements.txt
 conda create -n myPlot python=3.11
 conda activate myPlot
 pip install -r requirements.txt --proxy=127.0.0.1:10809
@@ -84,7 +86,6 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 在阅读本文前，建议补充一些相关知识。若你之前未了解过相关原理，可以参考以下的链接：
 
 * [姐控的机器学习记录](https://github.com/aceliuchanghong/my_lm_log)
-* [[旧]最小的算法题库](https://github.com/aceliuchanghong/myLeetCode)
 * [[旧]姐控的大模型执行记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
 
 ### 特别鸣谢
