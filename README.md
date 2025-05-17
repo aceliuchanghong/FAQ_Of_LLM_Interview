@@ -1,9 +1,24 @@
 ### FAQ_Of_LLM_Interview
 
-大模型算法岗面试题(含答案):常见问题和概念解析 "大模型面试题"、"算法岗面试"、"面试常见问题"、"大模型算法面试"、"
-大模型应用基础"
+大模型算法岗面试题(含答案):
+常见问题和概念解析 "大模型面试题"、"算法岗面试"、"面试常见问题"、"大模型算法面试"、"大模型应用基础"
 
-### 欢迎PR
+- [面试必问问题](面试必问问题.md)
+
+### 个人理解
+
+```
+第一是对于模型的了解,大模型涉及很宽,需要花费很多时间学习,但是一通百通
+    以下4个内容复习完再去看大模型就像张无忌学了九阳神功一样，可以修炼模型大挪移了：
+    - 复习线性代数：理解矩阵与样本数据特征值间的变换关系。
+    - 复习(多元)微积分及(偏)导数：理解神经网络反向更新。
+    - 复习统计学：理解特征值分布与模型基于概率预测原理（llm、diffusion都是）。
+    - 复习pytorch: 训练模型逻辑如何,架构如何,损失函数如何。
+
+第二是对于文档的处理,不管什么项目都需要处理文档,非常重要
+    可以看看IBM的RAG竞赛的冠军方案
+```
+(现在似乎还需要对于强化学习了解才行了,之后有空再写一下文档)
 
 ### 目录
 
@@ -73,14 +88,6 @@ FAQ_Of_LLM_Interview/
     └── LangChain.md
 ```
 
-### 来一个测试环境
-
-```shell
-conda create -n myPlot python=3.11
-conda activate myPlot
-pip install -r requirements.txt --proxy=127.0.0.1:10809
-```
-
 ### 必备知识
 
 在阅读本文前，建议补充一些相关知识。若你之前未了解过相关原理，可以参考以下的链接：
@@ -99,5 +106,7 @@ pip install -r requirements.txt --proxy=127.0.0.1:10809
 大模型这方向真的卷,新paper,新模型疯狂出,东西出的比我读的还快.
 ```
 
+### 欢迎PR
+
 ### *Star History*
-![Star History Chart](https://api.star-history.com/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)](https://www.star-history.com/#aceliuchanghong/FAQ_Of_LLM_Interview&Date)
