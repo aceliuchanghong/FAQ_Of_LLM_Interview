@@ -1,9 +1,19 @@
-### FAQ_Of_LLM_Interview
+## FAQ_Of_LLM_Interview
 
 大模型算法岗面试题(含答案):
 常见问题和概念解析 "大模型面试题"、"算法岗面试"、"面试常见问题"、"大模型算法面试"、"大模型应用基础"
 
 - [面试必问问题](面试必问问题.md)
+
+### Prompt--授人以鱼不如授人以渔
+```
+以老师教导学生的风格，教授我 [xxx]，循序渐进，言简意赅。  
+1. 从日常生活中的实际场景引入，激发兴趣。  
+2. 逐步引导，推导核心概念或公式，用通俗语言解释清楚。  
+3. 深入讲解关键细节或进阶内容，保持清晰。[非常重要--深入讲解]  
+4. 最后提供相关代码示例（如果适用），并简要解释代码逻辑。
+确保每步逻辑连贯，语言亲切，像老师一样耐心引导。
+```
 
 ### 个人理解
 
@@ -17,8 +27,9 @@
 
 第二是对于文档的处理,不管什么项目都需要处理文档,非常重要
     可以看看IBM的RAG竞赛的冠军方案
+
+(现在还需要对于强化学习了解才行..)
 ```
-(现在似乎还需要对于强化学习了解才行了,之后有空再写一下文档)
 
 ### 目录
 
@@ -50,6 +61,7 @@ FAQ_Of_LLM_Interview/
 │       ├── LLM_Fine_Tuning.ipynb
 │       └── LLM_Fine_Tuning.md
 ├── 3-面试问题记录/
+│   ├── 个人存储的各方向速成问题及解答-2025.md
 │   ├── 2024_interview_log/
 │   │   ├── ant.md
 │   │   ├── atom.md
@@ -67,7 +79,6 @@ FAQ_Of_LLM_Interview/
 │   ├── DataParallel原理与应用.md
 │   ├── DeepSpeed.md
 │   ├── Distributed-DataParallel分布式数据并行原理与应用.md
-│   ├── README.md
 │   └── 分布式训练与环境配置.md
 ├── 5-高效微调篇/
 │   ├── LoRA..ETC.md
@@ -76,8 +87,9 @@ FAQ_Of_LLM_Interview/
 │   ├── PEFT 进阶操作.md
 │   ├── Prefix-Tuning 原理与实战.md
 │   ├── Prompt-Tuning原理与实战.md
-│   ├── README.md
 │   └── fine-tune参数解释.md
+├── 6-强化学习基础/
+│   └── readme.md
 └── langchain/
     ├── LC&Extract.md
     ├── LangChain&Agents.md
@@ -106,7 +118,9 @@ FAQ_Of_LLM_Interview/
 大模型这方向真的卷,新paper,新模型疯狂出,东西出的比我读的还快.
 ```
 
-### 欢迎PR
+### 欢迎PR和联系我
+
+![推广二维码](using_files/wechat/self_qr.png)
 
 ### *Star History*
 [![Star History Chart](https://api.star-history.com/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)](https://www.star-history.com/#aceliuchanghong/FAQ_Of_LLM_Interview&Date)
