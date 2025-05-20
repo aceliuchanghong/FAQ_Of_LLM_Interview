@@ -55,14 +55,17 @@
 
 **基于LLM的代理(先不做)**
 
+**启发式奖励实现:**
 * 已考虑方面:
   * Runtime speed（速度）
   * Brevity（简洁性）
   * Correctness（正确性）
 * 还可以考虑:
-  * 对于错误输入参数的容错性（Fault Tolerance）
   * 可读性（Readability）
   * 文档完整性（Documentation Completeness）
+  * 安全性（Security）
+
+**学习型奖励模型:**
 
 #### 3. 定义奖励函数
 
