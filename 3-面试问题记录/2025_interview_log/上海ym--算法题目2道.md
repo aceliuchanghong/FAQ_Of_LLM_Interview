@@ -2,6 +2,10 @@
 
 二选一，完成一个即可，原则上5-7天完成
 
+解答位于主目录:
+`using_files/Reward_Guided_Code_Optimizer`
+`using_files/RL_Guided_Code_Assistant_with_RAG_Based_Context_Retrieval`
+
 # 线下算法题目2道
 ---
 
@@ -328,3 +332,5 @@ You don’t need to productionize this. We’re looking for:
 | **RL难度**          | 必须实现完整RL，调试可能复杂                       | 可伪RL（reranking），门槛低                      |
 | **时间预算**        | 6–8小时，稍长                                     | 4–6小时，较短                                   |
 | **灵活性**          | 任务聚焦（只改代码），但RL要求高                   | 任务多样（解释、优化等），实现方式更灵活         |
+
+

@@ -1,0 +1,54 @@
+{
+  "functions": [
+    {
+      "name": "factorial",
+      "description": "Calculate factorial of a number using iteration--计算一个数的阶乘",
+      "code": "def factorial(n):\n    result = 1\n    for i in range(1, n + 1):\n        result *= i\n    return result"
+    },
+    {
+      "name": "fibonacci",
+      "description": "Generate nth Fibonacci number using recursion--递归生成斐波那契数",
+      "code": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)"
+    },
+    {
+      "name": "sum_list",
+      "description": "Sum all elements in a list using loop--求和",
+      "code": "def sum_list(numbers):\n    total = 0\n    for num in numbers:\n        total += num\n    return total"
+    },
+    {
+      "name": "reverse_string",
+      "description": "Reverse a string using loop--反转字符",
+      "code": "def reverse_string(s):\n    result = ''\n    for char in s:\n        result = char + result\n    return result"
+    },
+    {
+      "name": "is_palindrome",
+      "description": "Check if a string is a palindrome--回文检测",
+      "code": "def is_palindrome(s):\n    s = s.lower()\n    for i in range(len(s) // 2):\n        if s[i] != s[-(i + 1)]:\n            return False\n    return True"
+    },
+    {
+      "name": "max_in_list",
+      "description": "Find maximum value in a list using loop--查最大值",
+      "code": "def max_in_list(numbers):\n    max_val = numbers[0]\n    for num in numbers:\n        if num > max_val:\n            max_val = num\n    return max_val"
+    },
+    {
+      "name": "count_vowels",
+      "description": "Count vowels in a string--统计元音字母数量",
+      "code": "def count_vowels(s):\n    vowels = 'aeiou'\n    count = 0\n    for char in s.lower():\n        if char in vowels:\n            count += 1\n    return count"
+    },
+    {
+      "name": "power",
+      "description": "Calculate power of a number using loop--计算数的幂",
+      "code": "def power(base, exp):\n    result = 1\n    for _ in range(exp):\n        result *= base\n    return result"
+    },
+    {
+      "name": "unique_elements",
+      "description": "Return list of unique elements--返回列表中不重复的元素组成的列表",
+      "code": "def unique_elements(lst):\n    result = []\n    for item in lst:\n        if item not in result:\n            result.append(item)\n    return result"
+    },
+    {
+      "name": "sort_list",
+      "description": "Sort a list using bubble sort--冒泡排序",
+      "code": "def sort_list(lst):\n    n = len(lst)\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            if lst[j] > lst[j + 1]:\n                lst[j], lst[j + 1] = lst[j + 1], lst[j]\n    return lst"
+    }
+  ]
+}
