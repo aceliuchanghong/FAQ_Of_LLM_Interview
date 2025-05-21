@@ -5,7 +5,7 @@ import tokenize
 from io import StringIO
 
 
-def evaluate_code(code: str, test_cases: list) -> float:
+def evaluate_code(code: str, test_cases: list, verbose: bool = False) -> float:
     """
     评估Python代码片段,基于多个指标计算奖励。
 
@@ -30,6 +30,8 @@ def evaluate_code(code: str, test_cases: list) -> float:
     try:
         ast.parse(code)
     except SyntaxError:
+        if verbose:
+            print("语法错误: -10")
         return -10.0  # 语法错误给予大幅负奖励
 
     # 提取函数名（假设代码包含单个函数定义）
@@ -40,6 +42,8 @@ def evaluate_code(code: str, test_cases: list) -> float:
             func_name = node.name
             break
     if not func_name:
+        if verbose:
+            print("未找到函数定义: -5")
         return -5.0  # 无函数定义时惩罚
 
     # 1. 正确性和容错性
@@ -62,12 +66,13 @@ def evaluate_code(code: str, test_cases: list) -> float:
     # 6. 安全性
     security_score = evaluate_security(code)
 
-    print(f"correctness_score: {correctness_score:.2f}")
-    print(f"runtime_score: {runtime_score:.2f}")
-    print(f"brevity_score: {brevity_score:.2f}")
-    print(f"readability_score: {readability_score:.2f}")
-    print(f"documentation_score: {documentation_score:.2f}")
-    print(f"security_score: {security_score:.2f}")
+    if verbose:
+        print(f"correctness_score: {correctness_score:.2f}")
+        print(f"runtime_score: {runtime_score:.2f}")
+        print(f"brevity_score: {brevity_score:.2f}")
+        print(f"readability_score: {readability_score:.2f}")
+        print(f"documentation_score: {documentation_score:.2f}")
+        print(f"security_score: {security_score:.2f}")
 
     # 综合加权奖励
     total_reward = (
@@ -241,26 +246,35 @@ def evaluate_documentation(code: str) -> float:
         return 0.0  # 语法错误返回 0
 
 
-def evaluate_security(code: str) -> float:
-    """评估代码的安全性，检查潜在的安全漏洞。"""
+def evaluate_security(code_str: str) -> float:
+    """
+    对明显危险的模式进行初步的安全检查。
+    真正的安全分析极其复杂。
+
+    参数:
+        code_str (str): Python 代码字符串。
+
+    返回:
+        float: 安全性得分 (0.0 到 1.0)。
+    """
     score = 1.0
-    # 检查危险函数和模块
-    dangerous_patterns = [
-        r"\beval\b",  # 使用 eval
-        r"\bexec\b",  # 使用 exec
-        r"\bimport\s+os\b",  # 导入 os 模块
-        r"\bimport\s+subprocess\b",  # 导入 subprocess 模块
-        r"\bopen\s*\(",  # 文件操作
-    ]
-    for pattern in dangerous_patterns:
-        if re.search(pattern, code):
-            score -= 0.2  # 每次发现危险模式扣 0.2 分
-    # 检查是否使用全局变量（可能导致状态泄露）
-    tree = ast.parse(code)
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Global):
-            score -= 0.1
-    return max(0.0, score)  # 确保分数不低于 0
+    # 检查 eval() 或 exec() 调用，如果与不受信任的输入一起使用可能很危险
+    if re.search(r"\beval\s*\(", code_str) or re.search(r"\bexec\s*\(", code_str):
+        score -= 0.75
+
+    # 检查 pickle，它可能是远程代码执行 (RCE) 的一个途径
+    if re.search(r"\bpickle\.load\b", code_str) or re.search(
+        r"\bpickle\.loads\b", code_str
+    ):
+        score -= 0.5
+
+    # 检查 os.system 或 subprocess 调用（简化检查 shell=True）
+    if re.search(r"os\.system\s*\(", code_str) or re.search(
+        r"subprocess\.(call|run|check_output|Popen)\s*\(.*shell\s*=\s*True", code_str
+    ):
+        score -= 0.5
+
+    return max(0.0, score)
 
 
 if __name__ == "__main__":

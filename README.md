@@ -102,10 +102,7 @@ FAQ_Of_LLM_Interview/
 
 ### 必备知识
 
-在阅读本文前，建议补充一些相关知识。若你之前未了解过相关原理，可以参考以下的链接：
-
-* [姐控的机器学习记录](https://github.com/aceliuchanghong/my_lm_log)
-* [[旧]姐控的大模型执行记录](https://github.com/aceliuchanghong/large_scale_models_learning_log)
+在阅读本库前，建议补充一些数学/模型相关知识。
 
 ### 特别鸣谢
 - [张老师](https://github.com/zyxcambridge)(提供了此库的最开始的思路,没有他就没有此库)
@@ -120,7 +117,7 @@ FAQ_Of_LLM_Interview/
 
 ### 欢迎PR和联系我
 
-![推广二维码](using_files/wechat/self_qr.png)
+![微信公众号二维码--随缘](using_files/wechat/self_qr.png)
 
 ### *Star History*
 [![Star History Chart](https://api.star-history.com/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)](https://www.star-history.com/#aceliuchanghong/FAQ_Of_LLM_Interview&Date)
