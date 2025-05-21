@@ -49,6 +49,8 @@ if __name__ == "__main__":
     """
     cd using_files/Reward_Guided_Code_Optimizer/
     python test_ast.py
+
+    gunzip *.jsonl.gz
     """
     code = """
 def sum_list(lst):
