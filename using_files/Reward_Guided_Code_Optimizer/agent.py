@@ -1,4 +1,5 @@
 from stable_baselines3 import PPO
+from torch import nn
 
 
 class CodeOptimizationAgent:
@@ -22,13 +23,18 @@ class CodeOptimizationAgent:
             gamma=gamma,
             gae_lambda=gae_lambda,
             clip_range=clip_range,
+            # policy_kwargs={
+            #     "net_arch": [64, 64],
+            #     "activation_fn": nn.ReLU,
+            #     "ortho_init": True,
+            # },
             verbose=1,
         )
+        self.model.set_random_seed(42)
 
     def train(self, total_timesteps):
         self.model.learn(total_timesteps=total_timesteps)
-        self.model.save("ppo_code_optimizer")
 
     def predict(self, observation):
-        action, _ = self.model.predict(observation)
+        action, _ = self.model.predict(observation, deterministic=True)
         return action

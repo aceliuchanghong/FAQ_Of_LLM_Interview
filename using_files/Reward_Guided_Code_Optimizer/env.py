@@ -23,11 +23,13 @@ class CodeOptimizationEnv(gym.Env):
         return [seed]
 
     def reset(self):
+        """重置，返回初始状态"""
         self.current_code = self.initial_code
         self.current_step = 0
         return self._get_state()
 
     def _get_state(self):
+        """获取当前状态"""
         try:
             tree = ast.parse(self.current_code)
             node_count = sum(1 for _ in ast.walk(tree))
@@ -42,6 +44,7 @@ class CodeOptimizationEnv(gym.Env):
             return np.zeros(10)
 
     def step(self, action: int):
+        """执行一步动作，返回当前状态"""
         self.current_code = self._apply_transformation(action)
         reward = evaluate_code(self.current_code, self.test_cases)
         self.current_step += 1
