@@ -71,4 +71,4 @@
 ![微信公众号二维码--随缘](using_files/wechat/self_qr.png)
 
 ### *Star History*
-[![Star History Chart](https://api.star-history.com/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)](https://www.star-history.com/#aceliuchanghong/FAQ_Of_LLM_Interview&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)](https://star-history.dera.page/#aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)
