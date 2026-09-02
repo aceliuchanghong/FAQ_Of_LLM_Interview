@@ -1,3 +1,3 @@
 
-会同步更新在公众号上
-![推广二维码](../using_files/wechat/self_qr.png)
+- [强化学习](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU2NDAxMDMxOQ==&action=getalbum&album_id=3994192799708102658)
+

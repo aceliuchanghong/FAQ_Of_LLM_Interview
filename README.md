@@ -5,18 +5,6 @@
 
 - [面试必问问题](面试必问问题.md)
 
-### Prompt--授人以鱼不如授人以渔
-
-```
-我是一名智力低下的博士生，我想学习一下[贝叶斯概率]，特别是[数学理论方面,比如条件概率,先验,之类的,我也不清楚到底有哪些,帮我完善,扩展一下]。
-
-以老师教导学生的风格教授我，循序渐进，言简意赅, 用傻子都能懂的语言详细给我讲。  
-1. 逐步引导，推导核心概念。[如果有数学公式,使用$]
-2. 深入讲解关键细节或进阶内容，保持清晰。[非常重要--深入讲解]  
-3. 最后提供相关代码，并简要解释代码逻辑。  
-确保每步逻辑连贯，语言亲切，像老师一样耐心引导。
-```
-
 ### 个人理解
 
 #### 1. 数学与编程基础
@@ -38,9 +26,9 @@
 
 #### 4. 强化学习
 - 基础概念：理解 Markov 决策过程、价值函数与策略梯度。从 Q-Learning 到 DQN，掌握探索-利用权衡。
-- 高级算法：PPO,GRPO,GSPO...,对齐模型输出与人类偏好。
+- 常用算法：PPO,DPO,GRPO...
 - 大模型整合：探索 RL 与 Transformer 的结合,Agent 系统中使用奖励模型指导生成。
-- 完整教程链接: [强化学习](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU2NDAxMDMxOQ==&action=getalbum&album_id=3994192799708102658)
+- 系列完整教程链接: [强化学习](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU2NDAxMDMxOQ==&action=getalbum&album_id=3994192799708102658)
 
 #### 5. Agent 及评测
 - Agent 系统搭建 langgraph
@@ -48,27 +36,20 @@
 - 评测 重点是数据
 
 #### 6. 英语及其他扩展
-- 英语能力：熟练阅读 arXiv 论文和官方文档, 从综述文章入手，积累专业词汇。
-
+- 英语能力：需要多读,积累词汇和语感。
 
 ### 必备知识
 
 在阅读本库前，建议补充一些数学相关知识
 - [数学知识](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU2NDAxMDMxOQ==&action=getalbum&album_id=3783886508759777283)
 
-### 特别鸣谢
-- [张老师](https://github.com/zyxcambridge)(提供了此库的最开始的思路,没有他就没有此库)
-- [赵老师](https://未提供链接,hh.com)(无偿回答了很多问题)
 
-### 吐槽
+### 其他
 
-```text
-大模型这方向真的卷,新paper,新模型,东西出的比我读的还快
-```
+> 吐槽: 大模型这方向真的卷,新paper,新模型,东西出的比我读的还快
+>
+> 因为作者当时对好些内容不太懂,所以写的目录好些根本就没写完,而现在又没有继续整理的打算了,之后这个库预期只更新面试记录了
 
-### 欢迎PR
-
-![微信公众号二维码--随缘](using_files/wechat/self_qr.png)
 
 ### *Star History*
 [![Star History Chart](https://star-history.dera.page/svg?repos=aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)](https://star-history.dera.page/#aceliuchanghong/FAQ_Of_LLM_Interview&type=Date)
